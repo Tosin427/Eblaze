@@ -395,6 +395,16 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
         onOk={handleCancel}
         onCancel={handleCancel}
       >
+        <div
+          style={{
+            backgroundColor: "#004100",
+            textAlign: "center",
+            color: "white",
+            borderRadius: "3px",
+            marginBottom: "10px",
+          }}
+          id="error"
+        ></div>
         <div>
           <i
             style={{
@@ -451,7 +461,7 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
             </div>
             <input
               type="submit"
-              className="btn btn-primary"
+              className="btn btn-primary popup"
               value="Send"
               // onChange={sendBitcoin}
               style={{

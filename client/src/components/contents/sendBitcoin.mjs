@@ -41,7 +41,17 @@ const sendBitcoin = async (
 
   fee = transactionSize;
   if (totalAmountAvailable - satoshiToSend - fee < 0) {
-    throw new Error("Balance is too low for this transaction");
+    // throw new Error("Balance is too low for this transaction");
+    document.getElementById("error").innerHTML =
+      "Balance is too low for this transaction";
+    setTimeout(function () {
+      document.getElementById("error").innerHTML = "";
+    }, 2000);
+  } else {
+    document.getElementById("error").innerHTML = "Transaction Successfull";
+    setTimeout(function () {
+      document.getElementById("error").innerHTML = "";
+    }, 2000);
   }
 
   //Set transaction input
