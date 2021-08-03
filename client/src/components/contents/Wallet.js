@@ -26,6 +26,7 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
   // const [loading, setLoading] = useState(false);
   const [visible, setVisible] = useState(false);
   const [sellShow, setSellShow] = useState(false);
+  const [sendShow, setSendShow] = useState(false);
 
   const sellShowModal = () => {
     setSellShow(true);
@@ -33,6 +34,10 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
 
   const showModal = () => {
     setVisible(true);
+  };
+
+  const sendShowModal = () => {
+    setSendShow(true);
   };
 
   // const handleOk = () => {
@@ -46,6 +51,7 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
   const handleCancel = () => {
     setVisible(false);
     setSellShow(false);
+    setSendShow(false);
   };
 
   // fetch Bitcoin Present Pricing
@@ -72,11 +78,24 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
   // console.log(user.bitcoinAddress.key);
   const [balance, setBalance] = useState("");
 
+  const [rate, setRate] = useState("");
+
   useEffect(() => {
     axios
       .get(`https://api.blockcypher.com/v1/btc/main/addrs/${bitadd}/balance`)
       .then((response) => setBalance(response.data.balance / 100000000));
   }, [bitadd]);
+
+  useEffect(() => {
+    axios
+      .get(
+        `
+      https://blockchain.info/ticker`
+      )
+      .then((response) => setRate(response.data.USD.buy));
+  }, [bitadd]);
+
+  // console.log(rate);
 
   // console.log(balance);
 
@@ -177,7 +196,7 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
                           style={{ display: "inline" }}
                           class="fas fa-angle-double-right"
                         ></i>
-                        <p>Sell</p>
+                        <p onClick={sendShowModal}>Sell</p>
                       </div>
                     </Col>
                     <Col className="gutter-row" span={8}>
@@ -385,6 +404,97 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
           </div>
         </div>
       </Modal>
+      {/* Modal for Sell BTC */}
+
+      <Modal
+        style={{ textAlign: "center" }}
+        visible={sendShow}
+        title="sell"
+        onOk={handleCancel}
+        onCancel={handleCancel}
+      >
+        <div
+          style={{
+            backgroundColor: "#004100",
+            textAlign: "center",
+            color: "white",
+            borderRadius: "3px",
+            marginBottom: "10px",
+          }}
+          id="error"
+        ></div>
+        <div>
+          <i
+            style={{
+              fontSize: "30px",
+              color: "gold",
+              paddingBottom: "10px",
+            }}
+            class="fab fa-bitcoin"
+          ></i>
+          <h3 style={{ paddingBottom: "10px" }}>Sell BTC</h3>
+        </div>
+        <div>1 BTC = $ {rate}</div>
+        <div>
+          <form onSubmit={handleSubmit} className="form">
+            <div className="form-group">
+              <input
+                type="text"
+                placeholder="Enter Amount to Send in dollars"
+                name="amountToSend"
+                required
+                value={amountToSend}
+                id="amount"
+                onChange={(e) => handleOnChange(e)}
+                // minLength="6"
+                style={{
+                  width: "100%",
+                  borderRadius: "5px",
+                  border: "2px solid #fff",
+                  backgroundColor: "#004100",
+                  color: "#fff",
+                  padding: "8px 10px",
+                  margin: "8px 0",
+                }}
+              />
+              <input
+                type="text"
+                placeholder="Enter Amount to Send in satoshi"
+                name="amountToSend"
+                required
+                value={amountToSend}
+                id="amount"
+                onChange={(e) => handleOnChange(e)}
+                // minLength="6"
+                style={{
+                  width: "100%",
+                  borderRadius: "5px",
+                  border: "2px solid #fff",
+                  backgroundColor: "#004100",
+                  color: "#fff",
+                  padding: "8px 10px",
+                  margin: "8px 0",
+                }}
+              />
+            </div>
+            <input
+              type="submit"
+              className="btn btn-primary popup"
+              value="Send"
+              // onChange={sendBitcoin}
+              style={{
+                backgroundColor: "#004100",
+                border: "none",
+                color: "#fff",
+                padding: "16px 32px",
+                textDecoration: "none",
+                margin: "4px 2px",
+                cursor: "pointer",
+              }}
+            />
+          </form>
+        </div>
+      </Modal>
 
       {/* Modal for Send BTC */}
 
@@ -416,6 +526,7 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
           ></i>
           <h3 style={{ paddingBottom: "10px" }}>Send BTC</h3>
         </div>
+        <div>1 BTC = $ {rate}</div>
         <div>
           <form onSubmit={handleSubmit} className="form">
             <div className="form-group">
