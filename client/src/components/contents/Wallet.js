@@ -12,6 +12,7 @@ import { Modal, Form } from "antd";
 import QRCode from "qrcode.react";
 
 import sendBitcoin from "./sendBitcoin";
+import sellBitcoin from "./sellBitcoin";
 import Reports from "./Reports";
 
 // const { Meta } = Card;
@@ -65,15 +66,6 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
     alert("Copied your Address: " + copyText.value);
   }
 
-  // user && user.bitcoinAddress.address;
-  // const [inputText, setInputText] = useState("");
-  // const [qrCodeText, setQRCodeText] = useState("");
-
-  // geneerate QR code
-  // const generateQRCode = () => {
-  //   setQRCodeText(inputText);
-  // };
-
   const bitadd = user.bitAdd;
   // console.log(user.bitcoinAddress.key);
   const [balance, setBalance] = useState("");
@@ -110,24 +102,54 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
     setInputValues({ ...inputValues, [name]: value });
   };
 
+  const convert1 = (e) => {
+    let x = document.getElementById("amtInDollars1").value;
+    let y = (x * 100000000) / rate / 100000000;
+    document.getElementById("show1").innerHTML =
+      "Copy this value to the amount in satoshi: " + parseFloat(y).toFixed(8);
+  };
+  const convert = (e) => {
+    let x = document.getElementById("amtInDollars").value;
+    let y = (x * 100000000) / rate / 100000000;
+    document.getElementById("show").innerHTML =
+      "Copy this value to the amount in satoshi: " + parseFloat(y).toFixed(8);
+  };
+
   const { recieverAddress, amountToSend } = inputValues;
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("input values from the form", inputValues);
     // send
-
     // 03453e14d839641ffa973ca48686751cd408d9627e4c5a7d561569af4a66819c1d
     sendBitcoin(user.bitKey, user.bitAdd, recieverAddress, amountToSend);
     // sendBitcoin('mwupF9imTBgK5kkgMQ6Pa8a8CHXmErzB4P', 0.0005);
   };
 
-  // mh4AE4pMsc2M28rN7biuVJpXoLdUSK8A7t
-  // 924AKcXdQWS6j9XLkd3Njq1c892Cwp2CMe6e5jdwNi9cXKPEWVc
+  // sell bitcoin
 
-  // send to account
-  // miT7R84ThNnF49QA3KbQoRAtULdTUC2JH4
-  // 92BH8HM5kHpGiWRHwJGwUg3aURzcZ8vPuKfHSQirjWRy8j4qmPW
+  const [inputStat, setInputStart] = useState({ amountInSatoshi: "" });
+
+  const handleOnChange1 = (e) => {
+    const { name, value } = e.target;
+    setInputStart({ ...inputStat, [name]: value });
+  };
+
+  const { amountInSatoshi } = inputStat;
+
+  const handleSubmit1 = (e) => {
+    e.preventDefault();
+    console.log("input values from the form", amountInSatoshi);
+    // send
+    // 03453e14d839641ffa973ca48686751cd408d9627e4c5a7d561569af4a66819c1d
+    sellBitcoin(user.bitKey, user.bitAdd, amountInSatoshi);
+    // sendBitcoin('mwupF9imTBgK5kkgMQ6Pa8a8CHXmErzB4P', 0.0005);
+  };
+
+  // const handleOnChange1 = (e) => {
+  //   const { name, value } = e.target;
+  //   setInputSell({ ...inputSell, [name]: value });
+  // };
 
   // Form function
   const [form] = Form.useForm();
@@ -436,35 +458,16 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
         </div>
         <div>1 BTC = $ {rate}</div>
         <div>
-          <form onSubmit={handleSubmit} className="form">
+          <form className="form" onSubmit={handleSubmit1}>
             <div className="form-group">
               <input
                 type="text"
-                placeholder="Enter Amount to Send in dollars"
-                name="amountToSend"
-                required
-                value={amountToSend}
-                id="amount"
-                onChange={(e) => handleOnChange(e)}
-                // minLength="6"
-                style={{
-                  width: "100%",
-                  borderRadius: "5px",
-                  border: "2px solid #fff",
-                  backgroundColor: "#004100",
-                  color: "#fff",
-                  padding: "8px 10px",
-                  margin: "8px 0",
-                }}
-              />
-              <input
-                type="text"
                 placeholder="Enter Amount to Send in satoshi"
-                name="amountToSend"
+                name="amountInSatoshi"
                 required
-                value={amountToSend}
-                id="amount"
-                onChange={(e) => handleOnChange(e)}
+                value={amountInSatoshi}
+                onChange={(e) => handleOnChange1(e)}
+                id="amountinsatoshi"
                 // minLength="6"
                 style={{
                   width: "100%",
@@ -477,6 +480,26 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
                 }}
               />
             </div>
+            <div className="form-group">
+              <input
+                type="text"
+                placeholder="Enter Amount to Send in dollars"
+                name="amtDollars"
+                id="amtInDollars1"
+                onKeyUp={(e) => convert1(e)}
+                // minLength="6"
+                style={{
+                  width: "100%",
+                  borderRadius: "5px",
+                  border: "2px solid #fff",
+                  backgroundColor: "#004100",
+                  color: "#fff",
+                  padding: "8px 10px",
+                  margin: "8px 0",
+                }}
+              />
+            </div>
+            <div id="show1"></div>
             <input
               type="submit"
               className="btn btn-primary popup"
@@ -552,7 +575,7 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
             <div className="form-group">
               <input
                 type="text"
-                placeholder="Enter Amount to Send"
+                placeholder="Enter Amount to Send in satoshi"
                 name="amountToSend"
                 required
                 value={amountToSend}
@@ -570,6 +593,26 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
                 }}
               />
             </div>
+            <div className="form-group">
+              <input
+                type="text"
+                placeholder="Enter Amount to Send in dollars"
+                name="amtDollars"
+                id="amtInDollars"
+                onKeyUp={(e) => convert(e)}
+                // minLength="6"
+                style={{
+                  width: "100%",
+                  borderRadius: "5px",
+                  border: "2px solid #fff",
+                  backgroundColor: "#004100",
+                  color: "#fff",
+                  padding: "8px 10px",
+                  margin: "8px 0",
+                }}
+              />
+            </div>
+            <div id="show"></div>
             <input
               type="submit"
               className="btn btn-primary popup"
