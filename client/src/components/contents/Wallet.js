@@ -91,6 +91,10 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
 
   // console.log(balance);
 
+  const convertToDollar = (balance * 100000000) / rate;
+
+  console.log(convertToDollar);
+
   // Send Bitcoin Function
   const [inputValues, setInputValues] = useState({
     recieverAddress: "",
@@ -200,7 +204,7 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
                 <div>
                   <Col span={24} className="card-contain">
                     <i class="fab fa-bitcoin"></i>
-                    <p>$0.00</p>
+                    <p>${convertToDollar}</p>
                     <p>BTC: {balance}</p>
                   </Col>
                 </div>
