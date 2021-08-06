@@ -4,6 +4,8 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const config = require("config");
 const { check, validationResult } = require("express-validator");
+const ethers = require("ethers");
+const crypto = require("crypto");
 
 const CoinKey = require("coinkey");
 
@@ -41,11 +43,20 @@ router.post(
       let bitAdd = wallet.publicAddress;
       let bitKey = wallet.privateKey.toString("hex");
 
+      // Generate Etherum Address
+      const id = crypto.randomBytes(32).toString("hex");
+      const privateKeyEth = "0x" + id;
+      // console.log(privateKeyEth);
+      const walletEth = new ethers.Wallet(privateKeyEth);
+      const walletEthAddress = walletEth.address;
+
       user = new User({
         name,
         email,
         bitAdd,
         bitKey,
+        privateKeyEth,
+        walletEthAddress,
         password,
       });
 
