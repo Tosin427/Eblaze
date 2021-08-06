@@ -14,7 +14,7 @@ import QRCode from "qrcode.react";
 import sendBitcoin from "./sendBitcoin";
 import sellBitcoin from "./sellBitcoin";
 // import getBalance from "./sendEth";
-import transferFund from "./sendEth";
+import transferFund from "./sendEth.mjs";
 import Reports from "./Reports";
 
 // const { Meta } = Card;
