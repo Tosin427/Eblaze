@@ -141,9 +141,9 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
 
   // console.log(balance);
 
-  const convertToDollar = Math.round(balance * rate).toFixed(3);
+  const convertToDollar = (balance * rate).toFixed(3);
 
-  const convertEthToDollar = Math.round(balanceEth * ethRate).toFixed(3);
+  const convertEthToDollar = (balanceEth * ethRate).toFixed(3);
 
   // Send Bitcoin Function
   const [inputValues, setInputValues] = useState({
