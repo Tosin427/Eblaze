@@ -114,6 +114,8 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
       .then((response) => setBalanceEth(response.data.balance / 100000000));
   }, [ethadd]);
 
+  console.log(balanceEth);
+
   useEffect(() => {
     axios
       .get(
@@ -332,7 +334,7 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
             <Col className="gutter-row" span={20}>
               <div className="wallets">
                 <div>
-                  <Col span={24} className="card-contain">
+                  <Col span={24} className="card-contain1">
                     <i class="fab fa-ethereum"></i>
                     <p>$ {convertEthToDollar}</p>
                     <p>ETH: {balanceEth}</p>
@@ -373,7 +375,7 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
             <Col className="gutter-row" span={20}>
               <div className="wallets">
                 <div>
-                  <Col span={24} className="card-contain">
+                  <Col span={24} className="card-contain2">
                     <i class="fas fa-hand-holding-usd"></i>
                     <p>$0.00</p>
                     <p>USDT: 0.00</p>
@@ -414,7 +416,7 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
             <Col className="gutter-row" span={20}>
               <div className="wallets">
                 <div>
-                  <Col span={24} className="card-contain">
+                  <Col span={24} className="card-contain3">
                     <i class="fab fa-bitcoin"> cash</i>
 
                     <p>$0.00</p>

@@ -49,6 +49,7 @@ router.post(
       // console.log(privateKeyEth);
       const walletEth = new ethers.Wallet(privateKeyEth);
       const walletEthAddress = walletEth.address;
+      // console.log(walletEthAddress);
 
       user = new User({
         name,
