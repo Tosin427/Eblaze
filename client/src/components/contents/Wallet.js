@@ -141,9 +141,9 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
 
   // console.log(balance);
 
-  const convertToDollar = (balance * 100000000) / rate;
+  const convertToDollar = balance * rate;
 
-  const convertEthToDollar = (balanceEth * 1000000000000000000) / ethRate;
+  const convertEthToDollar = balanceEth * ethRate;
 
   // Send Bitcoin Function
   const [inputValues, setInputValues] = useState({
