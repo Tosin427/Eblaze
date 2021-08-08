@@ -111,7 +111,9 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
   useEffect(() => {
     axios
       .get(`https://api.blockcypher.com/v1/eth/main/addrs/${ethadd}/balance`)
-      .then((response) => setBalanceEth(response.data.balance / 100000000));
+      .then((response) =>
+        setBalanceEth(response.data.balance / 1000000000000000000)
+      );
   }, [ethadd]);
 
   console.log(balanceEth);
