@@ -23,6 +23,7 @@ import Avatar from "react-avatar";
 // Contents import
 import Wallet from "../contents/Wallet";
 import NewDashboard from "./NewDashboard";
+import Chat from "../Chat";
 
 const { Header, Content, Footer, Sider } = Layout;
 // const { SubMenu } = Menu;
@@ -68,7 +69,7 @@ const Dashboard = ({
               Rates
             </Menu.Item>
             <Menu.Item key="6" icon={<WechatOutlined />}>
-              Chat
+              <Link to="/chat">Chat</Link>
             </Menu.Item>
             <Menu.Item key="7" icon={<SettingOutlined />}>
               Settings
@@ -98,6 +99,7 @@ const Dashboard = ({
             </Breadcrumb>
 
             <Switch>
+              <Route path="/chat" component={Chat}></Route>
               <Route path="/wallet" component={Wallet} />
               <Route pathe="/newdashboard" component={NewDashboard} />
             </Switch>
