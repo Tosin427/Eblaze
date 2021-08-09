@@ -67,10 +67,10 @@ const Transactions = () => {
   const data = [];
   for (let i = 0; i < 100; i++) {
     data.push({
-      // key: i,
-      // date: getData[i].confirmed,
-      // sent: getData[i].value / 100000000,
-      // details: getData[1].tx_hash,
+      key: i,
+      date: getData[i].confirmed,
+      sent: getData[i].value / 100000000,
+      details: getData[1].tx_hash,
       // age: 32,
       // address: `London Park no. ${i}`,
     });
