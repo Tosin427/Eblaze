@@ -24,6 +24,7 @@ import Avatar from "react-avatar";
 import Wallet from "../contents/Wallet";
 import NewDashboard from "./NewDashboard";
 import Chat from "../Chat";
+import Transactions from "../contents/Transactions";
 
 const { Header, Content, Footer, Sider } = Layout;
 // const { SubMenu } = Menu;
@@ -60,7 +61,7 @@ const Dashboard = ({
               P2P
             </Menu.Item>
             <Menu.Item key="3" icon={<PullRequestOutlined />}>
-              Transactions
+              <Link to="/transactions">Transactions</Link>
             </Menu.Item>
             <Menu.Item key="4" icon={<NodeExpandOutlined />}>
               Trade Now
@@ -99,6 +100,7 @@ const Dashboard = ({
             </Breadcrumb>
 
             <Switch>
+              <Route path="/transactions" component={Transactions}></Route>
               <Route path="/chat" component={Chat}></Route>
               <Route path="/wallet" component={Wallet} />
               <Route pathe="/newdashboard" component={NewDashboard} />
