@@ -59,15 +59,18 @@ const Transactions = () => {
   useEffect(() => {
     axios
       .get(
-        `https://api.blockcypher.com/v1/btc/main/addrs/1HqUb1yWNgdbuvpbijz6FxRXzkGdQnmuZj`
+        // "https://blockchain.info/rawaddr/1HqUb1yWNgdbuvpbijz6FxRXzkGdQnmuZj"
+        `https://api.blockcypher.com/v1/btc/main/addrs/1Dp2swkZnaTCCAAnicxg6s7q1gAFK24yXg`
       )
-      .then((response) => setGetData(response.data.txrefs));
+      .then((response) => setGetData(response.data.txs));
   }, [getData]);
+
+  // console.table(getData[1]);
+
   for (let i = 0; i < 5; i++) {
-    console.log(getData[0]);
     data.push({
       key: i,
-      // date: getData[i].value,
+      // date: getData[0].out[1].addr,
       // sent: getData[i].value / 100000000,
       // details: getData[1].tx_hash,
       // age: 32,
