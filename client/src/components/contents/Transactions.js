@@ -6,6 +6,7 @@ import "antd/dist/antd.css";
 import { Table } from "antd";
 
 const Transactions = () => {
+  // console.log(getData[0].confirmed);
   const columns = [
     {
       title: "Date",
@@ -54,23 +55,28 @@ const Transactions = () => {
   ];
 
   const data = [];
-  const [getData, setGetData] = useState("");
+
+  const [getData, setGetData] = useState([]);
 
   useEffect(() => {
     axios
       .get(
         // "https://blockchain.info/rawaddr/1HqUb1yWNgdbuvpbijz6FxRXzkGdQnmuZj"
-        `https://api.blockcypher.com/v1/btc/main/addrs/1Dp2swkZnaTCCAAnicxg6s7q1gAFK24yXg`
+        `https://api.blockcypher.com/v1/btc/main/addrs/1HqUb1yWNgdbuvpbijz6FxRXzkGdQnmuZj`
       )
-      .then((response) => setGetData(response.data.txs));
-  }, [getData]);
+      .then((response) => setGetData(response))
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
-  // console.table(getData[1]);
+  // console.log(getData.data.txrefs[0]);
 
   for (let i = 0; i < 5; i++) {
+    const dataGet = getData.data.txrefs[i];
     data.push({
       key: i,
-      // date: getData[0].out[1].addr,
+      date: dataGet.confirmed,
       // sent: getData[i].value / 100000000,
       // details: getData[1].tx_hash,
       // age: 32,
