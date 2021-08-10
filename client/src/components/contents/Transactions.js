@@ -53,28 +53,28 @@ const Transactions = () => {
     },
   ];
 
+  const data = [];
   const [getData, setGetData] = useState("");
+
   useEffect(() => {
     axios
       .get(
         `https://api.blockcypher.com/v1/btc/main/addrs/1HqUb1yWNgdbuvpbijz6FxRXzkGdQnmuZj`
       )
       .then((response) => setGetData(response.data.txrefs));
-  }, []);
-
-  console.log(getData);
-
-  const data = [];
-  for (let i = 0; i < 100; i++) {
+  }, [getData]);
+  for (let i = 0; i < 5; i++) {
+    console.log(getData[0]);
     data.push({
       key: i,
-      date: getData[i].confirmed,
-      sent: getData[i].value / 100000000,
-      details: getData[1].tx_hash,
+      // date: getData[i].value,
+      // sent: getData[i].value / 100000000,
+      // details: getData[1].tx_hash,
       // age: 32,
       // address: `London Park no. ${i}`,
     });
   }
+
   return (
     <div>
       <Table

@@ -5,21 +5,43 @@ import PropTypes from "prop-types";
 import { login } from "../../actions/auth";
 import "antd/dist/antd.css";
 import "./Login.css";
+import img from "../../img/login-img1.png";
 
 const Login = ({ login, isAuthenticated }) => {
-  const [formData, setFormData] = useState({
+  const initial_state = {
     email: "",
     password: "",
-  });
+    isLoggingIn: false,
+    showPassword: false,
+  };
 
-  const { email, password } = formData;
+  // const [formData, setFormData] = useState({
+  //   email: "",
+  //   password: "",
+  // })
+
+  const [state, setState] = useState(initial_state);
+
+  // const { email, password } = formData;
 
   const onChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setState((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  // setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = (e) => {
     e.preventDefault();
-    login(email, password);
+    // PLEASEDO SOME VALIDATION HERE IF THE USERNAME IS FILLED AND PASSWORD IS NOT EMPTY
+    login(state.email, state.password);
+  };
+
+  const handleTogglePassword = () => {
+    return setState((prevState) => ({
+      ...prevState,
+      showPassword: !prevState.showPassword,
+    }));
   };
 
   if (isAuthenticated) {
@@ -27,76 +49,61 @@ const Login = ({ login, isAuthenticated }) => {
   }
 
   return (
-    <div className="main">
-      <div className="contain">
-        <div>
-          <h1
-            className="large text-primary"
-            style={{ color: "#004100", fontSize: "28px" }}
-          >
-            Sign In
-          </h1>
-          <p className="lead" style={{ color: "#004100", fontSize: "16px" }}>
-            <i className="fas fa-user" /> Sign Into Your Account
-          </p>
-          <form className="form" onSubmit={onSubmit}>
-            <div className="form-group">
-              <input
-                type="email"
-                placeholder="Email Address"
-                name="email"
-                value={email}
-                onChange={onChange}
-                required
-                style={{
-                  width: "100%",
-                  borderRadius: "5px",
-                  border: "2px solid #fff",
-                  backgroundColor: "#004100",
-                  color: "#fff",
-                  padding: "8px 10px",
-                  margin: "8px 0",
-                }}
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="password"
-                placeholder="Password"
-                name="password"
-                value={password}
-                onChange={onChange}
-                minLength="6"
-                style={{
-                  width: "100%",
-                  borderRadius: "5px",
-                  border: "2px solid #fff",
-                  backgroundColor: "#004100",
-                  color: "#fff",
-                  padding: "8px 10px",
-                  margin: "8px 0",
-                }}
-              />
-            </div>
+    <div className="login-wrapper">
+      <div className="left-side">
+        <h1>Welcome back,</h1>
+        <h2>Kindly fill in details to log in</h2>
+        <img src={img} alt="Banner" />
+      </div>
+      <div className="right-side">
+        <form onSubmit={onSubmit}>
+          <h1 className="title">Welcome back!</h1>
+          <label htmlFor="email">Email</label>
+          <div className="input-group">
             <input
-              type="submit"
-              className="btn btn-primary"
-              value="Login"
-              style={{
-                backgroundColor: "#004100",
-                border: "none",
-                color: "#fff",
-                padding: "16px 32px",
-                textDecoration: "none",
-                margin: "4px 2px",
-                cursor: "pointer",
-              }}
+              placeholder="someemail@example.com"
+              name="email"
+              value={state.email}
+              onChange={onChange}
+              type="text"
             />
-          </form>
-          <p className="my-1" style={{ color: "#004100", paddingTop: "10px" }}>
-            Don't have an account? <Link to="/register">Sign Up</Link>
+            <i className="fa fa-envelope"></i>
+          </div>
+          <label htmlFor="password">Password</label>
+          <div className="input-group">
+            <input
+              type={state.showPassword ? "text" : "password"}
+              name="password"
+              value={state.password}
+              onChange={onChange}
+              placeholder="somepassword"
+            />
+            <i
+              onClick={handleTogglePassword}
+              className={`fa ${state.showPassword ? "fa-eye-slash" : "fa-eye"}`}
+            ></i>
+          </div>
+          <Link to="/" className="forgot-password right">
+            Forgot password?
+          </Link>
+          <button type="submit" className="login primary">
+            Sign in <i className="fa fa-lock"></i>
+          </button>
+          <button onClick={() => null} className="login">
+            {" "}
+            <img
+              alt="Google logo"
+              src="https://img.icons8.com/color/48/000000/google-logo.png"
+            />{" "}
+            Sign in with google
+          </button>
+          <p>
+            Dont have an account?{" "}
+            <Link to="/register" className="form-link">
+              Register
+            </Link>
           </p>
-        </div>
+        </form>
       </div>
     </div>
   );
