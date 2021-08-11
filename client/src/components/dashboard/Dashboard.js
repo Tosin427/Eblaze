@@ -62,22 +62,19 @@ const Dashboard = ({
             <Menu.Item key="2" icon={<WalletOutlined />}>
               <Link to="/wallet">Wallet</Link>
             </Menu.Item>
-            <Menu.Item key="3" icon={<PartitionOutlined />}>
-              P2P
-            </Menu.Item>
-            <Menu.Item key="4" icon={<PullRequestOutlined />}>
+            <Menu.Item key="3" icon={<PullRequestOutlined />}>
               <Link to="/transactions">Transactions</Link>
             </Menu.Item>
-            <Menu.Item key="5" icon={<NodeExpandOutlined />}>
+            <Menu.Item key="4" icon={<NodeExpandOutlined />}>
               Trade Now
             </Menu.Item>
-            <Menu.Item key="6" icon={<AreaChartOutlined />}>
+            <Menu.Item key="5" icon={<AreaChartOutlined />}>
               <Link to="/rates">Rates</Link>
             </Menu.Item>
             {/* <Menu.Item key="6" icon={<WechatOutlined />}>
               <Link to="/chat">Chat</Link>
             </Menu.Item> */}
-            <Menu.Item key="7" icon={<SettingOutlined />}>
+            <Menu.Item key="6" icon={<SettingOutlined />}>
               <Link to="/settings">Settings</Link>
             </Menu.Item>
             <Menu.Item onClick={logout} key="8" icon={<LogoutOutlined />}>

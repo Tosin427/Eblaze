@@ -36,6 +36,12 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
   const [sellEth, setSellEth] = useState(false);
   const [sendEth, setSendEth] = useState(false);
 
+  // comming soon
+  const [come, setCome] = useState(false);
+  const comingSoon = () => {
+    setCome(true);
+  };
+
   const recEthShowModal = () => {
     setReceiveEth(true);
   };
@@ -67,6 +73,7 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
     setReceiveEth(false);
     setSellEth(false);
     setSendEth(false);
+    setCome(false);
   };
 
   // fetch Bitcoin Present Pricing
@@ -135,7 +142,17 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
       .then((response) => setEthRate(response.data.USD));
   }, []);
 
-  // console.log(rate);
+  const [eurRate, setEurRate] = useState("");
+
+  useEffect(() => {
+    axios
+      .get(
+        "http://data.fixer.io/api/latest?access_key=2e1feefb76ad701e38336d6b64e9f647"
+      )
+      .then((response) => setEurRate(response.data.rates));
+  }, []);
+
+  // console.log(eurRate.NGN);
 
   // console.log(balance);
 
@@ -170,13 +187,29 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
     let x = document.getElementById("amtInDollars1").value;
     let y = (x * 100000000) / rate / 100000000;
     document.getElementById("show1").innerHTML =
-      "Copy this value to the amount in satoshi: " + parseFloat(y).toFixed(8);
+      "Copy this value to the amount in BTC: " + parseFloat(y).toFixed(8);
   };
+  // eurRate.NGN * eurRate.USD
+  const eur2Ngn = eurRate.NGN * eurRate.USD;
+  const convertToNgn = (e) => {
+    let x = document.getElementById("amountinsatoshi").value;
+    let y = (x * rate * eur2Ngn).toFixed(2);
+    document.getElementById("ngnequ").innerHTML = "You recieve: NGN " + y;
+  };
+
+  const convertETHToNgn = (e) => {
+    let x = document.getElementById("weitosell").value;
+    let y = (x * ethRate * eur2Ngn).toFixed(2);
+    document.getElementById("eth2ngn").innerHTML = "You recieve: NGN " + y;
+  };
+
+  // const convertToNgn =
+
   const convert = (e) => {
     let x = document.getElementById("amtInDollars").value;
     let y = (x * 100000000) / rate / 100000000;
     document.getElementById("show").innerHTML =
-      "Copy this value to the amount in satoshi: " + parseFloat(y).toFixed(8);
+      "Copy this value to the amount in BTC: " + parseFloat(y).toFixed(8);
   };
 
   // Convert Dollars to ETH
@@ -184,13 +217,13 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
     let x = document.getElementById("dolamt1").value;
     let y = (x * 1000000000000000000) / ethRate / 1000000000000000000;
     document.getElementById("ethshow1").innerHTML =
-      "Copy this value to the amount in wei: " + parseFloat(y).toFixed(8);
+      "Copy this value to the amount in ETH: " + parseFloat(y).toFixed(8);
   };
   const Ethconvert = (e) => {
     let x = document.getElementById("amtInDollars").value;
     let y = (x * 100000000) / ethRate / 100000000;
     document.getElementById("ethshow").innerHTML =
-      "Copy this value to the amount in wei: " + parseFloat(y).toFixed(8);
+      "Copy this value to the amount in ETH: " + parseFloat(y).toFixed(8);
   };
 
   const { recieverAddress, amountToSend } = inputValues;
@@ -385,7 +418,7 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
                     <Col className="gutter-row" span={8}>
                       <div className="receive">
                         <i style={{ display: "inline" }} class="fab fa-gg"></i>
-                        <p>ReceiveUSDT</p>
+                        <p onClick={comingSoon}>ReceiveUSDT</p>
                       </div>
                     </Col>
                     <Col className="gutter-row" span={8}>
@@ -394,7 +427,7 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
                           style={{ display: "inline" }}
                           class="fas fa-angle-double-right"
                         ></i>
-                        <p>Sell</p>
+                        <p onClick={comingSoon}>Sell</p>
                       </div>
                     </Col>
                     <Col className="gutter-row" span={8}>
@@ -403,7 +436,7 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
                           style={{ display: "inline" }}
                           class="fas fa-share-square"
                         ></i>
-                        <p>Send</p>
+                        <p onClick={comingSoon}>Send</p>
                       </div>
                     </Col>
                   </div>
@@ -427,7 +460,7 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
                     <Col className="gutter-row" span={8}>
                       <div className="receive">
                         <i style={{ display: "inline" }} class="fab fa-gg"></i>
-                        <p>ReceiveBCH</p>
+                        <p onClick={comingSoon}>ReceiveBCH</p>
                       </div>
                     </Col>
                     <Col className="gutter-row" span={8}>
@@ -436,7 +469,7 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
                           style={{ display: "inline" }}
                           class="fas fa-angle-double-right"
                         ></i>
-                        <p>Sell</p>
+                        <p onClick={comingSoon}>Sell</p>
                       </div>
                     </Col>
                     <Col className="gutter-row" span={8}>
@@ -445,7 +478,7 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
                           style={{ display: "inline" }}
                           class="fas fa-share-square"
                         ></i>
-                        <p>Send</p>
+                        <p onClick={comingSoon}>Send</p>
                       </div>
                     </Col>
                   </div>
@@ -456,6 +489,30 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
         </Row>
       </div>
       <Transactions />
+
+      {/* Modal for Comming soon */}
+
+      <Modal
+        style={{ textAlign: "center" }}
+        visible={come}
+        title="Coming Soom"
+        onOk={handleCancel}
+        onCancel={handleCancel}
+      >
+        <div
+          style={{
+            backgroundColor: "#004100",
+            textAlign: "center",
+            color: "white",
+            borderRadius: "3px",
+            marginBottom: "10px",
+          }}
+          id="error"
+        ></div>
+
+        <div>We are currently Developing the best experience just for you</div>
+      </Modal>
+
       {/* Modal for Recieve BTC */}
 
       <Modal
@@ -557,12 +614,13 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
             <div className="form-group">
               <input
                 type="text"
-                placeholder="Enter Amount to Send in satoshi"
+                placeholder="Enter Amount to Send in BTC"
                 name="amountInSatoshi"
                 required
                 value={amountInSatoshi}
                 onChange={(e) => handleOnChange1(e)}
                 id="amountinsatoshi"
+                onKeyUp={(e) => convertToNgn(e)}
                 // minLength="6"
                 style={{
                   width: "100%",
@@ -595,10 +653,11 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
               />
             </div>
             <div id="show1"></div>
+            <div id="ngnequ"></div>
             <input
               type="submit"
               className="btn btn-primary popup"
-              value="Send"
+              value="Sell"
               // onChange={sendBitcoin}
               style={{
                 backgroundColor: "#004100",
@@ -670,7 +729,7 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
             <div className="form-group">
               <input
                 type="text"
-                placeholder="Enter Amount to Send in satoshi"
+                placeholder="Enter Amount to Send in BTC"
                 name="amountToSend"
                 required
                 value={amountToSend}
@@ -762,12 +821,13 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
             <div className="form-group">
               <input
                 type="text"
-                placeholder="Enter Amount to Send in wei"
+                placeholder="Enter Amount to Send in ETH"
                 name="weiToSell"
                 required
                 value={weiToSell}
                 onChange={(e) => handleOnChangeEthSell(e)}
                 id="weitosell"
+                onKeyUp={(e) => convertETHToNgn(e)}
                 // minLength="6"
                 style={{
                   width: "100%",
@@ -800,6 +860,7 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
               />
             </div>
             <div id="ethshow"></div>
+            <div id="eth2ngn"></div>
             <input
               type="submit"
               className="btn btn-primary popup"
@@ -840,15 +901,6 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
           ></i>
           <h3 style={{ paddingBottom: "10px" }}>Recieve ETH</h3>
           <p>Copy Wallet address below or scan barcode to receive Ethereum</p>
-
-          {/* <input
-            type="text"
-            placeholder="Enter input"
-            value={user && user.bitcoinAddress.address}
-            onChange={(e) => setInputText(e.target.value)}
-          /> */}
-
-          {/* <input type="button" value="Generate" onClick={generateQRCode} /> */}
 
           <input
             id="ethaddress"
@@ -945,7 +997,7 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
             <div className="form-group">
               <input
                 type="text"
-                placeholder="Enter Amount to Send in wei"
+                placeholder="Enter Amount to Send in ETH"
                 name="weiToSend"
                 required
                 value={weiToSend}
