@@ -25,6 +25,7 @@ import Wallet from "../contents/Wallet";
 import NewDashboard from "./NewDashboard";
 // import Chat from "../Chat";
 import Transactions from "../contents/Transactions";
+import Rates from "../contents/Rates";
 
 const { Header, Content, Footer, Sider } = Layout;
 // const { SubMenu } = Menu;
@@ -70,7 +71,7 @@ const Dashboard = ({
               Trade Now
             </Menu.Item>
             <Menu.Item key="6" icon={<AreaChartOutlined />}>
-              Rates
+              <Link to="/rates">Rates</Link>
             </Menu.Item>
             {/* <Menu.Item key="6" icon={<WechatOutlined />}>
               <Link to="/chat">Chat</Link>
@@ -104,7 +105,7 @@ const Dashboard = ({
 
             <Switch>
               <Route path="/transactions" component={Transactions}></Route>
-              {/* <Route path="/chat" component={Chat}></Route> */}
+              <Route path="/rates" component={Rates}></Route>
               <Route path="/wallet" component={Wallet} />
               <Route pathe="/newdashboard" component={NewDashboard} />
             </Switch>
