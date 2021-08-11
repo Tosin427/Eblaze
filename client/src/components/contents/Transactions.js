@@ -87,6 +87,19 @@ const Transactions = () => {
       });
   }, []);
 
+  const [getEthData, setGetEthData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(
+        "https://api.blockcypher.com/v1/eth/main/addrs/0x41D3D98068c8EFbBf9a337655E6eA9139d7986e0"
+      )
+      .then((response) => setGetEthData(response.data.txrefs))
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <div>
       <h2>BTC Transactions</h2>
@@ -99,6 +112,38 @@ const Transactions = () => {
           sent: data.tx_input_n,
           value: data.value / 100000000,
           coin: "BTC",
+          recieved: data.tx_output_n,
+
+          // type: "BTC",
+          // currency: "BTC",
+          // details: data.tx_hash,
+        }))}
+        scroll={{ x: 1500 }}
+        summary={(pageData) => (
+          <Table.Summary fixed>
+            <Table.Summary.Row>
+              {/* <Table.Summary.Cell index={0} colSpan={2}>
+                Fix Left
+              </Table.Summary.Cell>
+              <Table.Summary.Cell index={2} colSpan={8}>
+                Scroll Context
+              </Table.Summary.Cell> */}
+              {/* <Table.Summary.Cell index={10}>Fix Right</Table.Summary.Cell> */}
+            </Table.Summary.Row>
+          </Table.Summary>
+        )}
+        sticky
+      />
+      ,<h2>ETH Transactions</h2>
+      <Table
+        columns={columns}
+        dataSource={getEthData.map((data, index) => ({
+          key: index,
+          date: data.confirmed,
+          details: data.tx_hash,
+          sent: data.tx_input_n,
+          value: (data.value / 1000000000000000000).toFixed(8),
+          coin: "ETH",
           recieved: data.tx_output_n,
 
           // type: "BTC",
