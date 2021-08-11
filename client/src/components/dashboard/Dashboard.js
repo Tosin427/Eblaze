@@ -26,6 +26,7 @@ import NewDashboard from "./NewDashboard";
 // import Chat from "../Chat";
 import Transactions from "../contents/Transactions";
 import Rates from "../contents/Rates";
+import Settings from "../contents/Settings";
 
 const { Header, Content, Footer, Sider } = Layout;
 // const { SubMenu } = Menu;
@@ -77,7 +78,7 @@ const Dashboard = ({
               <Link to="/chat">Chat</Link>
             </Menu.Item> */}
             <Menu.Item key="7" icon={<SettingOutlined />}>
-              Settings
+              <Link to="/settings">Settings</Link>
             </Menu.Item>
             <Menu.Item onClick={logout} key="8" icon={<LogoutOutlined />}>
               Logout
@@ -104,6 +105,7 @@ const Dashboard = ({
             </Breadcrumb>
 
             <Switch>
+              <Route path="/settings" component={Settings}></Route>
               <Route path="/transactions" component={Transactions}></Route>
               <Route path="/rates" component={Rates}></Route>
               <Route path="/wallet" component={Wallet} />
