@@ -47,7 +47,7 @@ const Dashboard = ({
   // const handleCollapsed = () => {
   //   setIsCollapsed(true);
   // };
-
+  console.log("Hello");
   return (
     <Router>
       <Layout style={{ minHeight: "100vh" }}>
