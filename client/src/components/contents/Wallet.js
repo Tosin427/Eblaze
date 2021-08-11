@@ -15,7 +15,7 @@ import sendBitcoin from "./sendBitcoin";
 import sellBitcoin from "./sellBitcoin";
 // import getBalance from "./sendEth";
 import transferFund from "./sendEth.js";
-import Reports from "./Reports";
+import Transactions from "./Transactions";
 
 // const { Meta } = Card;
 
@@ -116,8 +116,6 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
       );
   }, [ethadd]);
 
-  console.log(balanceEth);
-
   useEffect(() => {
     axios
       .get(
@@ -201,7 +199,7 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("input values from the form", inputValues);
+
     // send
     // 03453e14d839641ffa973ca48686751cd408d9627e4c5a7d561569af4a66819c1d
     sendBitcoin(user.bitKey, user.bitAdd, recieverAddress, amountToSend);
@@ -244,7 +242,6 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
 
   const handleSubmit1 = (e) => {
     e.preventDefault();
-    console.log("input values from the form", amountInSatoshi);
 
     sellBitcoin(user.bitKey, user.bitAdd, amountInSatoshi);
   };
@@ -261,7 +258,7 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
 
   const handleSubmitEthSell = (e) => {
     e.preventDefault();
-    console.log("input values from the form", weiToSell);
+
     transferFund(
       {
         address: user.walletEthAddress,
@@ -458,7 +455,7 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
           </Row>
         </Row>
       </div>
-      <Reports />
+      <Transactions />
       {/* Modal for Recieve BTC */}
 
       <Modal

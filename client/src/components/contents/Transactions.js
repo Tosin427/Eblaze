@@ -4,9 +4,10 @@ import axios from "axios";
 import "antd/dist/antd.css";
 // import "./index.css";
 import { Table } from "antd";
+// import { contextsKey } from "express-validator/src/base";
 
 const Transactions = () => {
-  // console.log(getData[0].confirmed);
+  // console.log(getData);
   const columns = [
     {
       title: "Date",
@@ -15,34 +16,34 @@ const Transactions = () => {
       key: "date",
       fixed: "left",
     },
+    // {
+    //   title: "Type",
+    //   width: 100,
+    //   dataIndex: "type",
+    //   key: "type",
+    //   fixed: "left",
+    // },
     {
-      title: "Type",
-      width: 100,
-      dataIndex: "age",
-      key: "age",
-      fixed: "left",
-    },
-    {
-      title: "Currency",
-      dataIndex: "address",
+      title: "Coin",
+      dataIndex: "coin",
       key: "1",
       width: 150,
     },
     {
-      title: "Mode",
-      dataIndex: "address",
+      title: "Value",
+      dataIndex: "value",
       key: "2",
       width: 150,
     },
     {
-      title: "Sent",
+      title: "Sent (-1) ",
       dataIndex: "sent",
       key: "3",
       width: 150,
     },
     {
-      title: "Status",
-      dataIndex: "address",
+      title: "Recieved (-1)",
+      dataIndex: "recieved",
       key: "4",
       width: 150,
     },
@@ -54,52 +55,67 @@ const Transactions = () => {
     },
   ];
 
-  const data = [];
+  // console.log(getData);
+
+  // console.log(getData.data.txrefs[0]);
+
+  // for (let i = 0; i < 5; i++) {
+  //   data.push({
+  //     key: i,
+  // date: getData[i].value,
+  // sent: getData[i].value / 100000000,
+  // details: getData.data.txrefs[i].tx_hash,
+  // age: 32,
+  // address: `London Park no. ${i}`,
+  //   });
+  // }
+
+  // buildData(getData);
+
+  // const data = [];
 
   const [getData, setGetData] = useState([]);
 
   useEffect(() => {
     axios
       .get(
-        // "https://blockchain.info/rawaddr/1HqUb1yWNgdbuvpbijz6FxRXzkGdQnmuZj"
-        `https://api.blockcypher.com/v1/btc/main/addrs/1HqUb1yWNgdbuvpbijz6FxRXzkGdQnmuZj`
+        "https://api.blockcypher.com/v1/btc/main/addrs/1Dp2swkZnaTCCAAnicxg6s7q1gAFK24yXg"
       )
-      .then((response) => setGetData(response))
+      .then((response) => setGetData(response.data.txrefs))
       .catch((err) => {
         console.log(err);
       });
   }, []);
 
-  // console.log(getData.data.txrefs[0]);
-
-  for (let i = 0; i < 5; i++) {
-    const dataGet = getData.data.txrefs[i];
-    data.push({
-      key: i,
-      date: dataGet.confirmed,
-      // sent: getData[i].value / 100000000,
-      // details: getData[1].tx_hash,
-      // age: 32,
-      // address: `London Park no. ${i}`,
-    });
-  }
-
   return (
     <div>
+      <h2>BTC Transactions</h2>
       <Table
         columns={columns}
-        dataSource={data}
+        dataSource={getData.map((data, index) => ({
+          key: index,
+          date: data.confirmed,
+          details: data.tx_hash,
+          sent: data.tx_input_n,
+          value: data.value / 100000000,
+          coin: "BTC",
+          recieved: data.tx_output_n,
+
+          // type: "BTC",
+          // currency: "BTC",
+          // details: data.tx_hash,
+        }))}
         scroll={{ x: 1500 }}
         summary={(pageData) => (
           <Table.Summary fixed>
             <Table.Summary.Row>
-              <Table.Summary.Cell index={0} colSpan={2}>
+              {/* <Table.Summary.Cell index={0} colSpan={2}>
                 Fix Left
               </Table.Summary.Cell>
               <Table.Summary.Cell index={2} colSpan={8}>
                 Scroll Context
-              </Table.Summary.Cell>
-              <Table.Summary.Cell index={10}>Fix Right</Table.Summary.Cell>
+              </Table.Summary.Cell> */}
+              {/* <Table.Summary.Cell index={10}>Fix Right</Table.Summary.Cell> */}
             </Table.Summary.Row>
           </Table.Summary>
         )}

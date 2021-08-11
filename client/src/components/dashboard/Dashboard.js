@@ -8,7 +8,7 @@ import { Layout, Menu, Breadcrumb } from "antd";
 import "antd/dist/antd.css";
 import "./Dashboard.css";
 import {
-  WechatOutlined,
+  DashboardOutlined,
   SettingOutlined,
   AreaChartOutlined,
   NodeExpandOutlined,
@@ -23,7 +23,7 @@ import Avatar from "react-avatar";
 // Contents import
 import Wallet from "../contents/Wallet";
 import NewDashboard from "./NewDashboard";
-import Chat from "../Chat";
+// import Chat from "../Chat";
 import Transactions from "../contents/Transactions";
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -54,24 +54,27 @@ const Dashboard = ({
             <img style={{ width: "30%", margin: "5px" }} src={logo} alt="" />
           </div>
           <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
-            <Menu.Item key="1" icon={<WalletOutlined />}>
+            <Menu.Item key="1" icon={<DashboardOutlined />}>
+              <Link to="/newdashboard">Overview</Link>
+            </Menu.Item>
+            <Menu.Item key="2" icon={<WalletOutlined />}>
               <Link to="/wallet">Wallet</Link>
             </Menu.Item>
-            <Menu.Item key="2" icon={<PartitionOutlined />}>
+            <Menu.Item key="3" icon={<PartitionOutlined />}>
               P2P
             </Menu.Item>
-            <Menu.Item key="3" icon={<PullRequestOutlined />}>
+            <Menu.Item key="4" icon={<PullRequestOutlined />}>
               <Link to="/transactions">Transactions</Link>
             </Menu.Item>
-            <Menu.Item key="4" icon={<NodeExpandOutlined />}>
+            <Menu.Item key="5" icon={<NodeExpandOutlined />}>
               Trade Now
             </Menu.Item>
-            <Menu.Item key="5" icon={<AreaChartOutlined />}>
+            <Menu.Item key="6" icon={<AreaChartOutlined />}>
               Rates
             </Menu.Item>
-            <Menu.Item key="6" icon={<WechatOutlined />}>
+            {/* <Menu.Item key="6" icon={<WechatOutlined />}>
               <Link to="/chat">Chat</Link>
-            </Menu.Item>
+            </Menu.Item> */}
             <Menu.Item key="7" icon={<SettingOutlined />}>
               Settings
             </Menu.Item>
@@ -101,7 +104,7 @@ const Dashboard = ({
 
             <Switch>
               <Route path="/transactions" component={Transactions}></Route>
-              <Route path="/chat" component={Chat}></Route>
+              {/* <Route path="/chat" component={Chat}></Route> */}
               <Route path="/wallet" component={Wallet} />
               <Route pathe="/newdashboard" component={NewDashboard} />
             </Switch>
