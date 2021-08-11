@@ -5,8 +5,8 @@
   list-style-type: none;
   text-decoration: none;
   -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  font-family: "Roboto";
+          box-sizing: border-box;
+  font-family: 'Roboto';
 }
 
 .login-wrapper {
@@ -18,7 +18,7 @@
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
-  justify-content: space-around;
+      justify-content: space-around;
   padding: 0 5em 0 5em;
 }
 
@@ -45,39 +45,31 @@
   line-height: 16px;
 }
 
-.login-wrapper .left-side,
-.login-wrapper .right-side {
+.login-wrapper .left-side, .login-wrapper .right-side {
   width: 40%;
   padding: 2em;
 }
 
-.login-wrapper .left-side img,
-.login-wrapper .right-side img {
+.login-wrapper .left-side img, .login-wrapper .right-side img {
   width: 100%;
 }
 
-.login-wrapper .left-side label,
-.login-wrapper .right-side label {
+.login-wrapper .left-side label, .login-wrapper .right-side label {
   margin-top: 25px;
   font-size: 10pt;
 }
 
-.login-wrapper .left-side input,
-.login-wrapper .left-side label,
-.login-wrapper .right-side input,
-.login-wrapper .right-side label {
+.login-wrapper .left-side input, .login-wrapper .left-side label, .login-wrapper .right-side input, .login-wrapper .right-side label {
   color: #666666;
   display: block;
   width: 100%;
 }
 
-.login-wrapper .left-side form,
-.login-wrapper .right-side form {
+.login-wrapper .left-side form, .login-wrapper .right-side form {
   max-width: 300px;
 }
 
-.login-wrapper .left-side form .input-group,
-.login-wrapper .right-side form .input-group {
+.login-wrapper .left-side form .input-group, .login-wrapper .right-side form .input-group {
   width: 100%;
   position: relative;
   height: 35px;
@@ -85,8 +77,7 @@
   label-display: block;
 }
 
-.login-wrapper .left-side form .input-group input,
-.login-wrapper .right-side form .input-group input {
+.login-wrapper .left-side form .input-group input, .login-wrapper .right-side form .input-group input {
   background: #e6e6e6;
   border: none;
   outline-width: 0 !important;
@@ -96,13 +87,11 @@
   padding: 0 10px;
 }
 
-.login-wrapper .left-side form .input-group input:focus,
-.login-wrapper .right-side form .input-group input:focus {
+.login-wrapper .left-side form .input-group input:focus, .login-wrapper .right-side form .input-group input:focus {
   font-weight: 700;
 }
 
-.login-wrapper .left-side form .input-group i,
-.login-wrapper .right-side form .input-group i {
+.login-wrapper .left-side form .input-group i, .login-wrapper .right-side form .input-group i {
   position: absolute;
   right: 0px;
   line-height: 40px;
@@ -113,37 +102,31 @@
   cursor: pointer;
 }
 
-.login-wrapper .left-side form p,
-.login-wrapper .right-side form p {
+.login-wrapper .left-side form p, .login-wrapper .right-side form p {
   color: #666666;
   font-size: 8pt;
   text-align: center;
 }
 
-.login-wrapper .left-side form a,
-.login-wrapper .right-side form a {
+.login-wrapper .left-side form a, .login-wrapper .right-side form a {
   color: #1890ff;
   font-size: 8pt;
 }
 
-.login-wrapper .left-side form a.center,
-.login-wrapper .right-side form a.center {
+.login-wrapper .left-side form a.center, .login-wrapper .right-side form a.center {
   text-align: center;
 }
 
-.login-wrapper .left-side form a.right,
-.login-wrapper .right-side form a.right {
+.login-wrapper .left-side form a.right, .login-wrapper .right-side form a.right {
   text-align: right;
   display: block;
 }
 
-.login-wrapper .left-side form a:hover,
-.login-wrapper .right-side form a:hover {
+.login-wrapper .left-side form a:hover, .login-wrapper .right-side form a:hover {
   color: #0069cb;
 }
 
-.login-wrapper .left-side form button,
-.login-wrapper .right-side form button {
+.login-wrapper .left-side form button, .login-wrapper .right-side form button {
   padding: 1em;
   text-align: center;
   border: 0;
@@ -159,32 +142,26 @@
   background-color: #f2f2f2;
 }
 
-.login-wrapper .left-side form button:hover,
-.login-wrapper .right-side form button:hover {
+.login-wrapper .left-side form button:hover, .login-wrapper .right-side form button:hover {
   background-color: #e6e6e6;
 }
 
-.login-wrapper .left-side form button.primary,
-.login-wrapper .right-side form button.primary {
+.login-wrapper .left-side form button.primary, .login-wrapper .right-side form button.primary {
   background-color: #1890ff;
   color: #fff;
 }
 
-.login-wrapper .left-side form button.primary:hover,
-.login-wrapper .right-side form button.primary:hover {
+.login-wrapper .left-side form button.primary:hover, .login-wrapper .right-side form button.primary:hover {
   background-color: #0076e4;
 }
 
-.login-wrapper .left-side form button i,
-.login-wrapper .left-side form button img,
-.login-wrapper .right-side form button i,
-.login-wrapper .right-side form button img {
+.login-wrapper .left-side form button i, .login-wrapper .left-side form button img, .login-wrapper .right-side form button i, .login-wrapper .right-side form button img {
   width: 20px;
   height: 20px;
   position: absolute;
   right: 20px;
   top: 10px;
-  line-height: 23px;
+  line-height: 35px;
 }
 
 .title {
