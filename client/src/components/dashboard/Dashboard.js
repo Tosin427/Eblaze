@@ -37,9 +37,6 @@ import Settings from "../settings/Settings";
 // import Transactions from "../contents/Transactions";
 import Rates from "../contents/Rates";
 
-import Settings from "../settings/Settings";
-import Layout2 from '../layout2/layout2'
-// import Settings from "../contents/Settings";
 
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -119,23 +116,6 @@ const Dashboard = ({
       </Switch>
     </Layout2>
   </Router>)
-
-  return (
-    <Router>
-      <Layout2 logout={logout}>
-        <Switch>
-          <Route path="/settings" component={Settings} />
-          <Route path="/transactions" component={Transactions}></Route>
-          <Route path="/chat" component={Chat}></Route>
-
-          <Route path="/rates" component={Rates}></Route>
-
-          <Route path="/wallet" component={Wallet} />
-          <Route pathe="/newdashboard" component={NewDashboard} />
-        </Switch>
-      </Layout2>
-    </Router>
-  );
 
 
   return (

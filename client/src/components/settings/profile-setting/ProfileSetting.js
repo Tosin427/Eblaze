@@ -1,7 +1,6 @@
 
 import React, { useEffect, useState } from 'react'
 
-import React from 'react'
 
 import Label from '../../form/input/Label'
 import Input from '../../form/input/input'
@@ -29,8 +28,6 @@ const ProfileSetting = ({user}) => {
     },[])
     
 
-const ProfileSetting = () => {
-
     return <div className='profile-settings'>
         <form>
             <ProfilePicture />
@@ -40,8 +37,6 @@ const ProfileSetting = () => {
             onChange={() => null}
 
             value={state.name}
-
-            value="Chinedu Ukpe"
 
             placeholder=""
             onIconClick={null}
@@ -53,8 +48,6 @@ const ProfileSetting = () => {
             value={state.email}
             disabled={true}
 
-            value="chinedu_ukpe@oulook.com"
-
             placeholder="Email"
             onIconClick={()=> null}
         />
@@ -65,8 +58,6 @@ const ProfileSetting = () => {
 
             placeholder={state.phone}
             disabled={true}
-
-            placeholder="08038080619"
 
             onIconClick={null}
         />
