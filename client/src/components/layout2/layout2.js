@@ -64,7 +64,9 @@ const Layout = ({children, logout}) => {
                 <SettingOutlined /> <Link to="/settings"> Settings</Link>
             </li>
             <li className="menu-item">
-                <LogoutOutlined /> <a onClick={logout} href="javascript:;" onClick={logout} id='nav-toggle'>Logout</a>
+
+                <LogoutOutlined /> <a href="javascript:;" onClick={logout} id='nav-toggle'>Logout</a>
+
             </li>
 
         </ul>

@@ -19,7 +19,10 @@
     "coinkey": "^3.0.0",
     "concurrently": "^6.2.0",
     "config": "^3.3.6",
+<<<<<<< HEAD
+=======
     "cors": "^2.8.5",
+>>>>>>> 5337b5f84fcff7b3e8daf7c26b7682f99608779f
     "ethers": "^5.4.4",
     "express": "^4.17.1",
     "express-validator": "^6.12.1",

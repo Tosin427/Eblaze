@@ -4,10 +4,9 @@ import axios from "axios";
 import "antd/dist/antd.css";
 // import "./index.css";
 import { Table } from "antd";
-// import { contextsKey } from "express-validator/src/base";
 
 const Transactions = () => {
-  // console.log(getData);
+  // console.log(getData[0].confirmed);
   const columns = [
     {
       title: "Date",
@@ -16,34 +15,34 @@ const Transactions = () => {
       key: "date",
       fixed: "left",
     },
-    // {
-    //   title: "Type",
-    //   width: 100,
-    //   dataIndex: "type",
-    //   key: "type",
-    //   fixed: "left",
-    // },
     {
-      title: "Coin",
-      dataIndex: "coin",
+      title: "Type",
+      width: 100,
+      dataIndex: "age",
+      key: "age",
+      fixed: "left",
+    },
+    {
+      title: "Currency",
+      dataIndex: "address",
       key: "1",
       width: 150,
     },
     {
-      title: "Value",
-      dataIndex: "value",
+      title: "Mode",
+      dataIndex: "address",
       key: "2",
       width: 150,
     },
     {
-      title: "Sent (-1) ",
+      title: "Sent",
       dataIndex: "sent",
       key: "3",
       width: 150,
     },
     {
-      title: "Recieved (-1)",
-      dataIndex: "recieved",
+      title: "Status",
+      dataIndex: "address",
       key: "4",
       width: 150,
     },
@@ -55,31 +54,14 @@ const Transactions = () => {
     },
   ];
 
-  // console.log(getData);
-
-  // console.log(getData.data.txrefs[0]);
-
-  // for (let i = 0; i < 5; i++) {
-  //   data.push({
-  //     key: i,
-  // date: getData[i].value,
-  // sent: getData[i].value / 100000000,
-  // details: getData.data.txrefs[i].tx_hash,
-  // age: 32,
-  // address: `London Park no. ${i}`,
-  //   });
-  // }
-
-  // buildData(getData);
-
-  // const data = [];
 
   const [getData, setGetData] = useState([]);
 
   useEffect(() => {
     axios
       .get(
-        "https://api.blockcypher.com/v1/btc/main/addrs/1Dp2swkZnaTCCAAnicxg6s7q1gAFK24yXg"
+        // "https://blockchain.info/rawaddr/1HqUb1yWNgdbuvpbijz6FxRXzkGdQnmuZj"
+        `https://api.blockcypher.com/v1/btc/main/addrs/1HqUb1yWNgdbuvpbijz6FxRXzkGdQnmuZj`
       )
       .then((response) => setGetData(response.data.txrefs))
       .catch((err) => {
@@ -87,80 +69,22 @@ const Transactions = () => {
       });
   }, []);
 
-  const [getEthData, setGetEthData] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get(
-        "https://api.blockcypher.com/v1/eth/main/addrs/0x41D3D98068c8EFbBf9a337655E6eA9139d7986e0"
-      )
-      .then((response) => setGetEthData(response.data.txrefs))
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
   return (
     <div>
-      <h2>BTC Transactions</h2>
       <Table
         columns={columns}
-        dataSource={getData.map((data, index) => ({
-          key: index,
-          date: data.confirmed,
-          details: data.tx_hash,
-          sent: data.tx_input_n,
-          value: data.value / 100000000,
-          coin: "BTC",
-          recieved: data.tx_output_n,
-
-          // type: "BTC",
-          // currency: "BTC",
-          // details: data.tx_hash,
-        }))}
+        dataSource={getData.map((data, index) => ({key: index, date: data.value}))}
         scroll={{ x: 1500 }}
         summary={(pageData) => (
           <Table.Summary fixed>
             <Table.Summary.Row>
-              {/* <Table.Summary.Cell index={0} colSpan={2}>
+              <Table.Summary.Cell index={0} colSpan={2}>
                 Fix Left
               </Table.Summary.Cell>
               <Table.Summary.Cell index={2} colSpan={8}>
                 Scroll Context
-              </Table.Summary.Cell> */}
-              {/* <Table.Summary.Cell index={10}>Fix Right</Table.Summary.Cell> */}
-            </Table.Summary.Row>
-          </Table.Summary>
-        )}
-        sticky
-      />
-      ,<h2>ETH Transactions</h2>
-      <Table
-        columns={columns}
-        dataSource={getEthData.map((data, index) => ({
-          key: index,
-          date: data.confirmed,
-          details: data.tx_hash,
-          sent: data.tx_input_n,
-          value: (data.value / 1000000000000000000).toFixed(8),
-          coin: "ETH",
-          recieved: data.tx_output_n,
-
-          // type: "BTC",
-          // currency: "BTC",
-          // details: data.tx_hash,
-        }))}
-        scroll={{ x: 1500 }}
-        summary={(pageData) => (
-          <Table.Summary fixed>
-            <Table.Summary.Row>
-              {/* <Table.Summary.Cell index={0} colSpan={2}>
-                Fix Left
               </Table.Summary.Cell>
-              <Table.Summary.Cell index={2} colSpan={8}>
-                Scroll Context
-              </Table.Summary.Cell> */}
-              {/* <Table.Summary.Cell index={10}>Fix Right</Table.Summary.Cell> */}
+              <Table.Summary.Cell index={10}>Fix Right</Table.Summary.Cell>
             </Table.Summary.Row>
           </Table.Summary>
         )}
