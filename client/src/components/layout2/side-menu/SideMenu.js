@@ -1,5 +1,6 @@
 import React from 'react'
 import "./SideMenu.css"
+import '../layout.css'
 import {
     WechatOutlined,
     SettingOutlined,
@@ -11,7 +12,7 @@ import {
     LogoutOutlined,
   } from "@ant-design/icons";
 
-const SideMenu = () => {
+const SideMenu = ({logo}) => {
     return <nav className={`side-menu ${state.navCollapsed ? 'collapsed' : ''}`}>
                 <div className="logo-wrapper">
                     <img src={logo} alt="Logo" />

@@ -26,7 +26,8 @@ import NewDashboard from "./NewDashboard";
 // import Chat from "../Chat";
 import Transactions from "../contents/Transactions";
 import Rates from "../contents/Rates";
-import Settings from "../contents/Settings";
+import Settings from "../settings/Settings";
+import Layout2 from '../layout2/layout2'
 
 const { Header, Content, Footer, Sider } = Layout;
 // const { SubMenu } = Menu;
@@ -37,7 +38,7 @@ const Dashboard = ({
   auth: { user },
   // profile: { profile },
   logout,
-}) => {
+}) => { 
   // useEffect(() => {
   //   getCurrentProfile();
   // }, [getCurrentProfile]);
@@ -47,7 +48,20 @@ const Dashboard = ({
   // const handleCollapsed = () => {
   //   setIsCollapsed(true);
   // };
-  console.log("Hello");
+  return( <Router>
+    <Layout2 logout={logout} user={user}>
+      <Switch>
+        <Route path="/settings" component={Settings} />
+        <Route path="/transactions" component={Transactions}></Route>
+        {/* <Route path="/chat" component={Chat}></Route> */}
+
+        <Route path="/rates" component={Rates}></Route>
+
+        <Route path="/wallet" component={Wallet} />
+        <Route pathe="/newdashboard" component={NewDashboard} />
+      </Switch>
+    </Layout2>
+  </Router>)
   return (
     <Router>
       <Layout style={{ minHeight: "100vh" }}>

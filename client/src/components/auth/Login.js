@@ -28,10 +28,22 @@ const Login = ({ login, isAuthenticated }) => {
     // setFormData({ ...formData, [e.target.name]: e.target.value });
 
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    // PLEASEDO SOME VALIDATION HERE IF THE USERNAME IS FILLED AND PASSWORD IS NOT EMPTY
-    login(state.email, state.password);
+    setState(prevState => ({
+      ...prevState,
+      isLoggingIn: true,
+    }))
+    try {
+      await login(state.email, state.password);
+    } catch (error) {
+      
+    }finally{
+      setState(prevState => ({
+        ...prevState,
+        isLoggingIn: false
+      }))
+    }
   };
 
 
@@ -61,6 +73,7 @@ const Login = ({ login, isAuthenticated }) => {
                 <div className="input-group">
                     <input 
                       placeholder="someemail@example.com"
+                      disabled={state.isLoggingIn}
                       name='email'
                       value={state.email} 
                       onChange={onChange}
@@ -74,6 +87,7 @@ const Login = ({ login, isAuthenticated }) => {
                       name='password'
                       value={state.password}
                       onChange={onChange}  
+                      disabled={state.isLoggingIn}
                       placeholder="somepassword"/>
                     <i 
                       onClick={handleTogglePassword}
@@ -81,7 +95,10 @@ const Login = ({ login, isAuthenticated }) => {
                     
                 </div>
                 <Link to="/" className="forgot-password right">Forgot password?</Link>
-                <button type='submit' className="login primary">Sign in <i className="fa fa-lock"></i></button>
+                <button
+                  type='submit' 
+                  disabled={state.isLoggingIn}
+                  className={`login ${state.isLoggingIn ? "" : 'primary'}`}>{state.isLoggingIn ? "Please wait..." : "Sign in"} <i className="fa fa-lock"></i></button>
                 <button onClick={() => null} className="login"> <img alt='Google logo' src="https://img.icons8.com/color/48/000000/google-logo.png"/> Sign in with google</button>
                 <p>Dont have an account? <Link to="/register" className="form-link">Register</Link></p>
             </form>

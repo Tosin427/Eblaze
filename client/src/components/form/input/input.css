@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  font-family: "Roboto";
+}
+
+.input-group {
+  width: 100%;
+  position: relative;
+  height: 40px;
+  margin: 10px 0;
+  label-display: block;
+}
+
+.input-group input {
+  background: #e6e6e6;
+  border: none;
+  outline-width: 0 !important;
+  position: absolute;
+  bottom: 0;
+  height: 40px;
+  padding: 0 10px;
+  width: 100%;
+}
+
+.input-group input:focus {
+  font-weight: 700;
+}
+
+.input-group i {
+  position: absolute;
+  right: 0px;
+  line-height: 40px;
+  width: 50px;
+  text-align: center;
+  background-color: #d9d9d9;
+  cursor: pointer;
+}
+/*# sourceMappingURL=input.css.map */

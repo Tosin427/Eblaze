@@ -1,0 +1,38 @@
+@import '../../misc/config';
+
+.input-group{
+    width: 100%;
+    position: relative;
+    // border-bottom: 1px solid $primary-color;
+    height: 40px;
+    
+    margin: 10px 0;
+    label: {
+        display: block;
+        
+    }
+    input{
+        background: darken($white, 10);
+        border: none;
+        outline-width: 0 !important;
+        position: absolute;
+        bottom: 0;
+        height: 40px;
+        padding: 0 10px;
+        width: 100%;
+        &:focus{
+            font-weight: 700;
+        }
+        
+    }
+    i{
+        position: absolute;
+        right: 0px;
+        line-height: 40px;
+        width: 50px;
+        // height: 50px;
+        text-align: center;
+        background-color: darken($white, 15);
+        cursor: pointer;
+    }
+}
