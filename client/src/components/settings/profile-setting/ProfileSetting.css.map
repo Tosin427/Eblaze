@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "ACAA,OAAO,CAAC,gGAAI;AAMZ,AAAA,CAAC,CAAA;EACG,OAAO,EAAE,CAAC;EACV,MAAM,EAAE,CAAC;EACT,UAAU,EAAE,UAAU;EACtB,UAAU,EAAE,IAAI;EAChB,eAAe,EAAE,IAAI;EACrB,WAAW,EAAE,QAAQ;CACxB;;ADXD,AACI,iBADa,CACb,EAAE,CAAA;EACE,UAAU,EAAE,MAAM;EAClB,SAAS,EAAE,IAAI;EACf,WAAW,EAAE,GAAG;CACnB",
+    "sources": [
+        "ProfileSetting.scss",
+        "../../misc/_config.scss"
+    ],
+    "names": [],
+    "file": "ProfileSetting.css"
+}

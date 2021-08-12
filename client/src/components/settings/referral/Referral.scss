@@ -1,0 +1,46 @@
+@import '../../misc/config';
+
+.referral{
+    h4{
+        color: $primary-color;
+    }
+    p, small{
+        text-align: center;
+        color: lighten($black, 40);
+        line-height: 1.5;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    small{
+        display: block;
+        word-wrap: break-word;
+        max-width: 300px;
+    }
+
+    .copy-icon{
+        display: block;
+        text-align: center;
+        margin-bottom: 20px;
+        cursor: pointer;
+        &:hover{
+            i{
+                background-color: darken($white, 2);
+            }
+        }
+
+        i{
+            display: inline-block;
+            text-align: center;
+            margin: 0 auto;
+            font-size: 16pt;
+            border: 1px solid darken($white, 5);
+            padding: 1em;
+            transition: background-color 200ms linear;
+            color: $primary-color;
+        }
+        
+    }
+
+
+}

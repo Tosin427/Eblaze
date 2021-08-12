@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  font-family: "Roboto";
+}
+
+button {
+  padding: 1em;
+  text-align: center;
+  border: 0;
+  outline-width: 0 !important;
+  width: 100%;
+  margin: 10px 0;
+  position: relative;
+  font-weight: 700;
+  cursor: pointer;
+  color: #333333;
+  -webkit-transition: background-color 200ms linear;
+  transition: background-color 200ms linear;
+  background-color: #f2f2f2;
+}
+
+button:hover {
+  background-color: #e6e6e6;
+}
+
+button.primary {
+  background-color: #072c4e;
+  color: #fff;
+}
+
+button.primary:hover {
+  background-color: #03121f;
+}
+
+button i, button img {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  line-height: 23px;
+}
+/*# sourceMappingURL=Button.css.map */

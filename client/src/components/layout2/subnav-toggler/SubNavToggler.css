@@ -1,0 +1,21 @@
+.subnav-toggler {
+  position: fixed;
+  top: 30vh;
+  right: 0;
+  width: 50px;
+  max-height: 300px;
+  text-align: center;
+  background-color: #fff;
+  cursor: pointer;
+  display: none;
+  font-size: 16pt;
+  -webkit-box-shadow: 0 0 4px #888;
+          box-shadow: 0 0 4px #888;
+}
+
+@media screen and (max-width: 720px) {
+  .subnav-toggler {
+    display: inherit;
+  }
+}
+/*# sourceMappingURL=SubNavToggler.css.map */
