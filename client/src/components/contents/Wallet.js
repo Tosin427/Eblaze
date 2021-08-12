@@ -190,17 +190,36 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
       "Copy this value to the amount in BTC: " + parseFloat(y).toFixed(8);
   };
   // eurRate.NGN * eurRate.USD
+  // 28336.96
   const eur2Ngn = eurRate.NGN * eurRate.USD;
   const convertToNgn = (e) => {
     let x = document.getElementById("amountinsatoshi").value;
-    let y = (x * rate * eur2Ngn).toFixed(2);
-    document.getElementById("ngnequ").innerHTML = "You recieve: NGN " + y;
+    let multRateSta = x * rate;
+    if (multRateSta >= 50 && multRateSta < 100) {
+      let y = (multRateSta * 500).toFixed(2);
+      document.getElementById("ngnequ").innerHTML = "You recieve: NGN " + y;
+    } else if (multRateSta >= 100 && multRateSta < 300) {
+      let z = (multRateSta * 505).toFixed(2);
+      document.getElementById("ngnequ").innerHTML = "You recieve: NGN " + z;
+    } else if (multRateSta >= 400) {
+      let h = (multRateSta * 510).toFixed(2);
+      document.getElementById("ngnequ").innerHTML = "You recieve: NGN " + h;
+    }
   };
 
   const convertETHToNgn = (e) => {
     let x = document.getElementById("weitosell").value;
-    let y = (x * ethRate * eur2Ngn).toFixed(2);
-    document.getElementById("eth2ngn").innerHTML = "You recieve: NGN " + y;
+    let ethRateCon = x * ethRate;
+    if (ethRateCon >= 50 && ethRateCon < 100) {
+      let y = (ethRateCon * 495).toFixed(2);
+      document.getElementById("eth2ngn").innerHTML = "You recieve: NGN " + y;
+    } else if (ethRateCon >= 100 && ethRateCon < 300) {
+      let z = (ethRateCon * 500).toFixed(2);
+      document.getElementById("eth2ngn").innerHTML = "You recieve: NGN " + z;
+    } else if (ethRateCon >= 400) {
+      let h = (ethRateCon * 510).toFixed(2);
+      document.getElementById("eth2ngn").innerHTML = "You recieve: NGN " + h;
+    }
   };
 
   // const convertToNgn =
@@ -232,6 +251,7 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     // send
     // 03453e14d839641ffa973ca48686751cd408d9627e4c5a7d561569af4a66819c1d
     sendBitcoin(user.bitKey, user.bitAdd, recieverAddress, amountToSend);
@@ -290,6 +310,7 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
 
   const handleSubmitEthSell = (e) => {
     e.preventDefault();
+
     transferFund(
       {
         address: user.walletEthAddress,
@@ -862,7 +883,7 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
             <input
               type="submit"
               className="btn btn-primary popup"
-              value="Send"
+              value="Sell"
               // onChange={sendBitcoin}
               style={{
                 backgroundColor: "#004100",
