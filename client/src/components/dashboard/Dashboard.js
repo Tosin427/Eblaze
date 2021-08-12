@@ -28,6 +28,7 @@ import NewDashboard from "./NewDashboard";
 
 import Chat from "../Chat";
 import Transactions from "../contents/Transactions";
+
 import Layout2 from "../layout2/layout2";
 
 import SideMenuList from "../layout2/side-menu/SideMenuList";
