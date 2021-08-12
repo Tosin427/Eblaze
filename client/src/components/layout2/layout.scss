@@ -67,7 +67,9 @@ $secondary-color: #be0606;
                     
                 }
                 a{
-                    display: none;
+                    small{
+                        display: none;
+                    }
                 }
                 i,svg{
                     // cursor: pointer;
@@ -96,7 +98,7 @@ $secondary-color: #be0606;
             padding: 10px 20px;
             cursor: pointer !important;
             &:hover{
-                a, i, svg{
+                a, i, svg, small{
                     color: $white !important;
                     font-weight: 300;
                 }
@@ -104,18 +106,21 @@ $secondary-color: #be0606;
             &.active{
                 background-color: darken($primary-color, 8);
                 border-right: 2px solid $secondary-color;
-                a, i, svg{
+                a, i, svg, small{
                     color: $white;
                     font-weight: 700;
                 }
             }
-            a, i, svg{
+            a, i, svg, small{
                 font-size: 10pt;
             }
             a{
-                color: darken($white, 30);
-                font-weight: 300;
-                margin-left: 10px;
+                small{
+
+                    color: darken($white, 30);
+                    font-weight: 300;
+                    margin-left: 10px;
+                }
             }
             i, svg{
                 display: inline-block;

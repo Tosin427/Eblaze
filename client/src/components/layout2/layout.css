@@ -70,7 +70,7 @@
   border: 0;
 }
 
-.side-menu.collapsed .menu-list .menu-item a {
+.side-menu.collapsed .menu-list .menu-item a small {
   display: none;
 }
 
@@ -101,7 +101,7 @@
   cursor: pointer !important;
 }
 
-.side-menu .menu-list .menu-item:hover a, .side-menu .menu-list .menu-item:hover i, .side-menu .menu-list .menu-item:hover svg {
+.side-menu .menu-list .menu-item:hover a, .side-menu .menu-list .menu-item:hover i, .side-menu .menu-list .menu-item:hover svg, .side-menu .menu-list .menu-item:hover small {
   color: #fff !important;
   font-weight: 300;
 }
@@ -111,16 +111,16 @@
   border-right: 2px solid #be0606;
 }
 
-.side-menu .menu-list .menu-item.active a, .side-menu .menu-list .menu-item.active i, .side-menu .menu-list .menu-item.active svg {
+.side-menu .menu-list .menu-item.active a, .side-menu .menu-list .menu-item.active i, .side-menu .menu-list .menu-item.active svg, .side-menu .menu-list .menu-item.active small {
   color: #fff;
   font-weight: 700;
 }
 
-.side-menu .menu-list .menu-item a, .side-menu .menu-list .menu-item i, .side-menu .menu-list .menu-item svg {
+.side-menu .menu-list .menu-item a, .side-menu .menu-list .menu-item i, .side-menu .menu-list .menu-item svg, .side-menu .menu-list .menu-item small {
   font-size: 10pt;
 }
 
-.side-menu .menu-list .menu-item a {
+.side-menu .menu-list .menu-item a small {
   color: #b3b3b3;
   font-weight: 300;
   margin-left: 10px;

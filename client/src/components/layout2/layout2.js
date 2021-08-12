@@ -20,11 +20,48 @@ import SideMenuItem from "./side-menu-item/SideMenuItem";
 
 const initial_state = {
   navCollapsed: false,
-  activeMenu: null,
+  activeMenu: 0,
 };
+
+
+const menu_links = [
+    {
+        text: "Overview",
+        icon: <PartitionOutlined />,
+        link: '/newdashboard'
+    },
+    {
+        text: "Wallet",
+        icon: <WalletOutlined />,
+        link: '/wallet'
+    },
+    {
+        text: "Transactions",
+        icon: <PullRequestOutlined />,
+        link: '/transactions'
+    },
+    {
+        text: "Trade Now",
+        icon: <NodeExpandOutlined />,
+        link: '/newdashboard'
+    },
+    {
+        text: "Rates",
+        icon: <AreaChartOutlined />,
+        link: '/rates'
+    },
+    {
+        text: "Settings",
+        icon: <SettingOutlined />,
+        link: '/settings'
+    },
+
+]
+
 
 const Layout = ({ children, logout, user }) => {
   const [state, setState] = useState(initial_state);
+  const [activeMenu, setActiveMenu] = useState(0);
 
   const toggleNavCollapse = () => {
     return setState((prevState) => ({
@@ -41,36 +78,25 @@ const Layout = ({ children, logout, user }) => {
         </div>
 
         <ul className="menu-list">
-          <li className="menu-item active">
-            <WalletOutlined /> <Link to="/newdashboard">Overview</Link>
-          </li>
-          <li className="menu-item">
-            <WalletOutlined /> <Link to="/wallet">Wallet</Link>
-          </li>
-          <li className="menu-item">
-            <PartitionOutlined /> <Link to="/"> P2P</Link>
-          </li>
-          <li className="menu-item">
-            <PullRequestOutlined /> <Link to="/transactions">Transactions</Link>
-          </li>
-          <li className="menu-item">
-            <NodeExpandOutlined /> <Link to="/">Trade Now</Link>
-          </li>
-          <li className="menu-item">
-            <AreaChartOutlined /> <Link to="/rates"> Rates</Link>
-          </li>
-          {/* <li className="menu-item">
-                <WechatOutlined /> <Link to="/chat"> Chat</Link>
-            </li> */}
-          <li className="menu-item">
-            <SettingOutlined /> <Link to="/settings"> Settings</Link>
-          </li>
-          <li className="menu-item">
-            <LogoutOutlined />{" "}
-            <a href="javascript:;" onClick={logout} id="nav-toggle">
-              Logout
-            </a>
-          </li>
+            {
+                menu_links.map((menu, index) => (
+                    <li className={`menu-item ${activeMenu === index ? 'active' : ''}`} 
+                        
+                    key={index}>
+                        <Link
+                            onClick={() => setActiveMenu(index)} 
+                            to={menu.link}>{menu.icon} <small>{menu.text}</small></Link>
+                    </li>
+                ))
+            }
+
+            <li className="menu-item">
+
+                <a href="javascript:;" onClick={logout} id='nav-toggle'><LogoutOutlined /> <small>Logout</small></a>
+
+            </li>
+
+       
         </ul>
         <a
           href="javascript:;"
