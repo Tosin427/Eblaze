@@ -53,8 +53,6 @@ const security_links = [
 
 const Settings = ({user}) => {
 
-const Settings = () => {
-
     
     const [activeMenu, changeActiveMenu] = useState(0);
     const [showMobileSettings, setShowMobileSettings] = useState(true);
@@ -122,5 +120,4 @@ const mapStateToProps = state =>({
 
 export default connect(mapStateToProps)(Settings);
 
-export default Settings;
 
