@@ -1,12 +1,18 @@
 const express = require("express");
 const connectDB = require("./config/db");
 const path = require("path");
+<<<<<<< HEAD
+
+const app = express();
+
+=======
 const cors = require("cors");
 
 const app = express();
 
 app.use(cors());
 
+>>>>>>> 5337b5f84fcff7b3e8daf7c26b7682f99608779f
 // Connect Database
 connectDB();
 

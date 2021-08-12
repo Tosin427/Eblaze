@@ -25,17 +25,17 @@ import Layout2 from '../layout2/layout2';
 // Contents import
 import Wallet from "../contents/Wallet";
 import NewDashboard from "./NewDashboard";
-import Chat from '../Chat'
+
+import Chat from "../Chat";
 import Transactions from "../contents/Transactions";
-// import Layout2 from '../layout2/layout2'
+import Layout2 from '../layout2/layout2'
+
 import SideMenuList from "../layout2/side-menu/SideMenuList";
 import Settings from "../settings/Settings";
 // import Chat from "../Chat";
 // import Transactions from "../contents/Transactions";
 import Rates from "../contents/Rates";
 // import Settings from "../contents/Settings";
-// import Settings from '../settings/Settings'
-
 
 const { Header, Content, Footer, Sider } = Layout;
 // const { SubMenu } = Menu;
