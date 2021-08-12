@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  font-family: "Roboto";
+}
+
+.notification-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.notification-wrapper > div {
+  width: 25%;
+}
+
+.notification-wrapper > div:first-of-type {
+  width: 35%;
+}
+
+.notification-wrapper > div p {
+  line-height: 3;
+  font-size: 10pt;
+}
+
+@media screen and (max-width: 720px) {
+  h4 {
+    line-height: 1 !important;
+  }
+  .notification-wrapper > div p {
+    font-size: 8pt;
+    line-height: 1;
+    margin-top: 3em;
+  }
+}
+/*# sourceMappingURL=Notification.css.map */

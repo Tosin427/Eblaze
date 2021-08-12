@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const SideMenuItem = ({icon, text, link}) => {
+const SideMenuItem = ({item,children}) => {
     return <li className="menu-item">
-                {icon} 
-                <Link to={link} >{text}</Link>
+                {item.icon} 
+                <Link to={item.link} >{item.text} {children} </Link>
             </li>
 }
 

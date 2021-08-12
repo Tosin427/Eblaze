@@ -20,13 +20,16 @@ import {
 import logo from "../../img/logo.png";
 import Avatar from "react-avatar";
 
+import Layout2 from '../layout2/layout2';
 // Contents import
 import Wallet from "../contents/Wallet";
 import NewDashboard from "./NewDashboard";
+import Chat from '../Chat'
 // import Chat from "../Chat";
 import Transactions from "../contents/Transactions";
 import Rates from "../contents/Rates";
-import Settings from "../contents/Settings";
+// import Settings from "../contents/Settings";
+import Settings from '../settings/Settings'
 
 const { Header, Content, Footer, Sider } = Layout;
 // const { SubMenu } = Menu;
@@ -47,6 +50,19 @@ const Dashboard = ({
   // const handleCollapsed = () => {
   //   setIsCollapsed(true);
   // };
+  return( <Router>
+    <Layout2 logout={logout}>
+      <Switch>
+        <Route path="/settings" component={Settings} />
+        <Route path="/transactions" component={Transactions}></Route>
+        <Route path="/chat" component={Chat}></Route>
+        <Route path="/rates" component={Rates}></Route>
+        <Route path="/wallet" component={Wallet} />
+        <Route pathe="/newdashboard" component={NewDashboard} />
+      </Switch>
+    </Layout2>
+  </Router>)
+
   console.log("Hello");
   return (
     <Router>
