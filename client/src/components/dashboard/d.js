@@ -9,7 +9,6 @@ import "antd/dist/antd.css";
 import "./Dashboard.css";
 import {
   WechatOutlined,
-  DashboardOutlined,
   SettingOutlined,
   AreaChartOutlined,
   NodeExpandOutlined,
@@ -26,59 +25,10 @@ import Wallet from "../contents/Wallet";
 import NewDashboard from "./NewDashboard";
 import Chat from "../Chat";
 import Transactions from "../contents/Transactions";
-import Layout2 from '../layout2/layout2'
-import SideMenuList from "../layout2/side-menu/SideMenuList";
-import Settings from "../settings/Settings";
-// import Chat from "../Chat";
-// import Transactions from "../contents/Transactions";
-import Rates from "../contents/Rates";
-// import Settings from "../contents/Settings";
+import Layout2 from "../layout2/layout2";
 
 const { Header, Content, Footer, Sider } = Layout;
 // const { SubMenu } = Menu;
-
-const sideMenuList = [
-  {
-    'link' : '/',
-    'icon': 'fas fa-credit-card',
-    'text': "Wallet",
-  },
-  {
-    'link' : '/',
-    'icon': 'fas fa-retweet',
-    'text': "P2P",
-  },
-  {
-    'link' : '/',
-    'icon': 'fas fa-site-map',
-    'text': "Transactions",
-  },
-  {
-    'link' : '/',
-    'icon': 'fas fa-rocket',
-    'text': "Trade Now",
-  },
-  {
-    'link' : '/',
-    'icon': 'fas fa-list',
-    'text': "Rates",
-  },
-  {
-    'link' : '/',
-    'icon': 'fas fa-comment',
-    'text': "Chats",
-  },
-  {
-    'link' : '/',
-    'icon': 'fas fa-cog',
-    'text': "Settings",
-  },
-  {
-    'link' : '/',
-    'icon': 'fas fa-power-off',
-    'text': "Logout",
-  },
-]
 
 const Dashboard = ({
   // getCurrentProfile,
@@ -96,20 +46,20 @@ const Dashboard = ({
   // const handleCollapsed = () => {
   //   setIsCollapsed(true);
   // };
-  return( <Router>
-    <Layout2 logout={logout}>
-      <Switch>
-        <Route path="/settings" component={Settings} />
-        <Route path="/transactions" component={Transactions}></Route>
-        <Route path="/chat" component={Chat}></Route>
-        <Route path="/wallet" component={Wallet} />
-        <Route pathe="/newdashboard" component={NewDashboard} />
-      </Switch>
-    </Layout2>
-  </Router>)
+  return (
+    <Router>
+      <Layout2>
+        <Switch>
+          <Route path="/transactions" component={Transactions}></Route>
+          <Route path="/chat" component={Chat}></Route>
+          <Route path="/wallet" component={Wallet} />
+          <Route pathe="/newdashboard" component={NewDashboard} />
+        </Switch>
+      </Layout2>
+    </Router>
+  );
 
   return (
-
     <Router>
       <Layout style={{ minHeight: "100vh" }}>
         <Sider collapsible>
@@ -117,11 +67,11 @@ const Dashboard = ({
             <img style={{ width: "30%", margin: "5px" }} src={logo} alt="" />
           </div>
           <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
-            <Menu.Item key="1" icon={<DashboardOutlined />}>
-              <Link to="/newdashboard">Overview</Link>
-            </Menu.Item>
-            <Menu.Item key="2" icon={<WalletOutlined />}>
+            <Menu.Item key="1" icon={<WalletOutlined />}>
               <Link to="/wallet">Wallet</Link>
+            </Menu.Item>
+            <Menu.Item key="2" icon={<PartitionOutlined />}>
+              P2P
             </Menu.Item>
             <Menu.Item key="3" icon={<PullRequestOutlined />}>
               <Link to="/transactions">Transactions</Link>
@@ -130,13 +80,13 @@ const Dashboard = ({
               Trade Now
             </Menu.Item>
             <Menu.Item key="5" icon={<AreaChartOutlined />}>
-              <Link to="/rates">Rates</Link>
+              Rates
             </Menu.Item>
-            {/* <Menu.Item key="6" icon={<WechatOutlined />}>
+            <Menu.Item key="6" icon={<WechatOutlined />}>
               <Link to="/chat">Chat</Link>
-            </Menu.Item> */}
-            <Menu.Item key="6" icon={<SettingOutlined />}>
-              <Link to="/settings">Settings</Link>
+            </Menu.Item>
+            <Menu.Item key="7" icon={<SettingOutlined />}>
+              Settings
             </Menu.Item>
             <Menu.Item onClick={logout} key="8" icon={<LogoutOutlined />}>
               Logout
@@ -163,9 +113,8 @@ const Dashboard = ({
             </Breadcrumb>
 
             <Switch>
-              <Route path="/settings" component={Settings}></Route>
               <Route path="/transactions" component={Transactions}></Route>
-              <Route path="/rates" component={Rates}></Route>
+              <Route path="/chat" component={Chat}></Route>
               <Route path="/wallet" component={Wallet} />
               <Route pathe="/newdashboard" component={NewDashboard} />
             </Switch>

@@ -4,7 +4,7 @@ import { Divider } from "antd";
 function NewDashboard() {
   return (
     <div>
-      <Divider orientation="left">Wallets</Divider>
+      <Divider orientation="left">Overview</Divider>
       <div style={{ margin: "auto", width: "50%", padding: "10px" }}>
         <h1
           style={{
