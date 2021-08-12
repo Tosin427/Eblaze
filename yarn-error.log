@@ -1,0 +1,66 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn install
+
+PATH: 
+  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin
+
+Yarn version: 
+  1.22.10
+
+Node version: 
+  14.17.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/user/Documents/GitHub/Eblaze/package.json: Unexpected token < in JSON at position 680
+      at JSON.parse (<anonymous>)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "eapp",
+    "version": "1.0.0",
+    "description": "Crypto Currency Exchange",
+    "main": "server.js",
+    "scripts": {
+      "build": "cd client && npm run build",
+      "install-client": "cd client && npm install",
+      "start": "node server",
+      "server": "nodemon server",
+      "client": "npm start --prefix client",
+      "dev": "concurrently \"npm run server\" \"npm run client\"",
+      "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    },
+    "author": "Tosin Ajiboye",
+    "license": "ISC",
+    "dependencies": {
+      "bcryptjs": "^2.4.3",
+      "coinkey": "^3.0.0",
+      "concurrently": "^6.2.0",
+      "config": "^3.3.6",
+  <<<<<<< HEAD
+  =======
+      "cors": "^2.8.5",
+  >>>>>>> 5337b5f84fcff7b3e8daf7c26b7682f99608779f
+      "ethers": "^5.4.4",
+      "express": "^4.17.1",
+      "express-validator": "^6.12.1",
+      "jsonwebtoken": "^8.5.1",
+      "mongoose": "^5.13.5",
+      "nodemon": "^2.0.12",
+      "path": "^0.12.7",
+      "qrcode.react": "^1.0.1",
+      "react-router-dom": "^5.2.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

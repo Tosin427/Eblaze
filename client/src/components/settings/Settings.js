@@ -9,7 +9,10 @@ import Notification from './notification/Notification';
 import BankAccount from './bank-account/BankAccount';
 import ChangePassword from './change-password/ChangePassword';
 import SubnavToggler from '../layout2/subnav-toggler/SubnavToggler';
+
 import { connect } from 'react-redux';
+
+
 
 const menu_links = [
     {
@@ -47,13 +50,21 @@ const security_links = [
 ]
 
 
+
 const Settings = ({user}) => {
+
+const Settings = () => {
+
     
     const [activeMenu, changeActiveMenu] = useState(0);
     const [showMobileSettings, setShowMobileSettings] = useState(true);
     
     const match = useRouteMatch().path;
     const handleMenuClick = index => {
+
+
+        console.log('Menu CLicked')
+
         changeActiveMenu(index);
         setShowMobileSettings(true)
     }
@@ -84,9 +95,13 @@ const Settings = ({user}) => {
         {/* <SettingLinks hideOnMobile={!showMobileSettings} style={{backgroundColor: '#fff'}}> */}
          <div className={`setting-content ${!showMobileSettings ? 'hide-on-mobile' : ''}`} >
             <Switch>
+
                 <Route path={`${match}/profile`} >
                     <ProfileSetting user={user} />
                 </Route>
+
+                <Route path={`${match}/profile`} component={ProfileSetting} />
+
                 <Route path={`${match}/referral`} component={Referral} />
                 <Route path={`${match}/notification`} component={Notification} />
                 <Route path={`${match}/bank-accounts`} component={BankAccount} />
@@ -100,8 +115,12 @@ const Settings = ({user}) => {
     </div>
 }
 
+
 const mapStateToProps = state =>({
     user: state.auth.user,
 })
 
 export default connect(mapStateToProps)(Settings);
+
+export default Settings;
+

@@ -232,7 +232,6 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     // send
     // 03453e14d839641ffa973ca48686751cd408d9627e4c5a7d561569af4a66819c1d
     sendBitcoin(user.bitKey, user.bitAdd, recieverAddress, amountToSend);
@@ -291,7 +290,6 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
 
   const handleSubmitEthSell = (e) => {
     e.preventDefault();
-
     transferFund(
       {
         address: user.walletEthAddress,
