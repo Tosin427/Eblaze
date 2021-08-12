@@ -1,10 +1,36 @@
+
+import React, { useEffect, useState } from 'react'
+
 import React from 'react'
+
 import Label from '../../form/input/Label'
 import Input from '../../form/input/input'
 import Button from '../../form/button/Button'
 import ProfilePicture from '../profile-picture/ProfilePicture'
 
+
+const ProfileSetting = ({user}) => {
+    console.log(user ? user.name : "no name")
+    const initial_state = {
+        name: '',
+        email: '',
+        phone:''
+    }
+
+    const [state, setState] = useState(initial_state)
+
+    useEffect(() => {
+        setState(prevState => ({
+            ...prevState,
+            name: user ? user.name : '', 
+            email: user ? user.email : '', 
+            phone: user ? user.phone : '', 
+        }))
+    },[])
+    
+
 const ProfileSetting = () => {
+
     return <div className='profile-settings'>
         <form>
             <ProfilePicture />
@@ -12,14 +38,23 @@ const ProfileSetting = () => {
         <Label label="Name" />
         <Input
             onChange={() => null}
+
+            value={state.name}
+
             value="Chinedu Ukpe"
+
             placeholder=""
             onIconClick={null}
         />
         <Label label="Email" />
         <Input
             onChange={() => null}
+
+            value={state.email}
+            disabled={true}
+
             value="chinedu_ukpe@oulook.com"
+
             placeholder="Email"
             onIconClick={()=> null}
         />
@@ -27,7 +62,12 @@ const ProfileSetting = () => {
         <Input
             onChange={() => null}
             value=""
+
+            placeholder={state.phone}
+            disabled={true}
+
             placeholder="08038080619"
+
             onIconClick={null}
         />
         <Button variant="primary">Update </Button>
