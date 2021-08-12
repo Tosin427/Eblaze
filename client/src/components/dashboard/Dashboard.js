@@ -8,6 +8,7 @@ import { Layout, Menu, Breadcrumb } from "antd";
 import "antd/dist/antd.css";
 import "./Dashboard.css";
 import {
+  WechatOutlined,
   DashboardOutlined,
   SettingOutlined,
   AreaChartOutlined,
@@ -20,16 +21,67 @@ import {
 import logo from "../../img/logo.png";
 import Avatar from "react-avatar";
 
+import Layout2 from '../layout2/layout2';
 // Contents import
 import Wallet from "../contents/Wallet";
 import NewDashboard from "./NewDashboard";
-// import Chat from "../Chat";
+import Chat from '../Chat'
 import Transactions from "../contents/Transactions";
+// import Layout2 from '../layout2/layout2'
+import SideMenuList from "../layout2/side-menu/SideMenuList";
+import Settings from "../settings/Settings";
+// import Chat from "../Chat";
+// import Transactions from "../contents/Transactions";
 import Rates from "../contents/Rates";
-import Settings from "../contents/Settings";
+// import Settings from "../contents/Settings";
+// import Settings from '../settings/Settings'
+
 
 const { Header, Content, Footer, Sider } = Layout;
 // const { SubMenu } = Menu;
+
+const sideMenuList = [
+  {
+    'link' : '/',
+    'icon': 'fas fa-credit-card',
+    'text': "Wallet",
+  },
+  {
+    'link' : '/',
+    'icon': 'fas fa-retweet',
+    'text': "P2P",
+  },
+  {
+    'link' : '/',
+    'icon': 'fas fa-site-map',
+    'text': "Transactions",
+  },
+  {
+    'link' : '/',
+    'icon': 'fas fa-rocket',
+    'text': "Trade Now",
+  },
+  {
+    'link' : '/',
+    'icon': 'fas fa-list',
+    'text': "Rates",
+  },
+  {
+    'link' : '/',
+    'icon': 'fas fa-comment',
+    'text': "Chats",
+  },
+  {
+    'link' : '/',
+    'icon': 'fas fa-cog',
+    'text': "Settings",
+  },
+  {
+    'link' : '/',
+    'icon': 'fas fa-power-off',
+    'text': "Logout",
+  },
+]
 
 const Dashboard = ({
   // getCurrentProfile,
@@ -47,8 +99,23 @@ const Dashboard = ({
   // const handleCollapsed = () => {
   //   setIsCollapsed(true);
   // };
-  console.log("Hello");
+  return( <Router>
+    <Layout2 logout={logout}>
+      <Switch>
+        <Route path="/settings" component={Settings} />
+        <Route path="/transactions" component={Transactions}></Route>
+        <Route path="/chat" component={Chat}></Route>
+
+        <Route path="/rates" component={Rates}></Route>
+
+        <Route path="/wallet" component={Wallet} />
+        <Route pathe="/newdashboard" component={NewDashboard} />
+      </Switch>
+    </Layout2>
+  </Router>)
+
   return (
+
     <Router>
       <Layout style={{ minHeight: "100vh" }}>
         <Sider collapsible>

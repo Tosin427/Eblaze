@@ -32,11 +32,23 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    setState(prevState => ({
+      ...prevState,
+      isSigningUp: true
+    }))
     const {name, email, password, password2} = state;
-    if (password !== password2) {
-      setAlert("Passwords do not match", "danger");
-    } else {
-      register({ name, email, password });
+    try{
+      if (password !== password2) {
+        setAlert("Passwords do not match", "danger");
+      } else {
+        await register({ name, email, password });
+      }
+    }catch{}
+    finally{
+      setState(prevState => ({
+        ...prevState,
+        isSigningUp: false
+      }))
     }
   };
 
@@ -185,6 +197,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                       name='name'
                       value={state.name} 
                       onChange={onChange}
+                      disabled={state.isSigningUp}
                       type="text" />
                     <i className="fa fa-user"></i>
                 </div>
@@ -194,6 +207,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                       placeholder="someemail@example.com"
                       name='email'
                       value={state.email} 
+                      disabled={state.isSigningUp}
                       onChange={onChange}
                       type="text" />
                     <i className="fa fa-envelope"></i>
@@ -204,6 +218,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                       type={state.showPassword ? 'text' : 'password'}
                       name='password'
                       value={state.password}
+                      disabled={state.isSigningUp}
                       onChange={onChange}  
                       placeholder="somepassword"/>
                     <i
@@ -218,6 +233,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                       type={state.showPassword ? 'text' : 'password'}
                       name='password2'
                       value={state.password2}
+                      disabled={state.isSigningUp}
                       onChange={onChange}  
                       placeholder="somepassword"/>
                     <i
@@ -225,7 +241,10 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                       className={`fa ${state.showPassword ? 'fa-eye-slash' : 'fa-eye'}`} ></i>
                     
                 </div>
-                <button type='submit' className="login primary">Register <i className="fa fa-chevron-right"></i></button>
+                <button 
+                  type='submit' 
+                  disabled={state.isSigningUp}
+                  className={`login ${state.isSigningUp ? "" : "primary"}`}> {state.isSigningUp ? "Please wait" : "Register"} <i className="fa fa-chevron-right"></i></button>
                 <p>Already registered? <Link to="/login" className="form-link">Login</Link></p>
             </form>
         </div>

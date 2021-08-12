@@ -1,0 +1,36 @@
+@import '../../misc/config';
+
+button{
+    padding: 1em;
+    text-align: center;
+    border: 0;
+    outline-width: 0 !important;
+    width: 100%;
+    margin: 10px 0;
+    position: relative;
+    font-weight: 700;
+    cursor: pointer;
+    color: lighten($black, 20);
+    transition: background-color 200ms linear;
+    background-color: darken($white, 5);
+    
+    &:hover{
+        background-color: darken($white, 10);
+    }
+    &.primary{
+        background-color: $primary-color;
+        color: $white;
+        &:hover{
+            background-color: darken($primary-color, 10);
+        }
+    }
+
+    i, img{
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        right: 20px;
+        top:10px;
+        line-height: 23px;
+    }
+}

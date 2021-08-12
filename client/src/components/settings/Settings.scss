@@ -1,0 +1,39 @@
+@import '../misc/config';
+
+
+.settings{
+    width: 95%;
+    max-width: 800px;
+    min-height: 70vh;
+    margin: 0 auto;
+    box-shadow: 0 0 10px darken($white, 10);
+    background-color: darken($white, 0);
+    display: flex;
+}   
+
+.setting-content{
+    width: 100%;
+    max-width: 600px;
+    padding: 2em;
+}
+
+h4{
+    text-align: center;
+    font-size: 16pt;
+    font-weight: 700;
+    line-height: 2.5;
+}
+
+
+@media screen and (max-width: 720px) {
+    .settings{
+        flex-direction: column;
+    }
+
+    .setting-content{
+        // padding: 0;
+        &.hide-on-mobile{
+            display: none;
+        }
+    }
+}

@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  font-family: "Roboto";
+}
+
+.settings {
+  width: 95%;
+  max-width: 800px;
+  min-height: 70vh;
+  margin: 0 auto;
+  -webkit-box-shadow: 0 0 10px #e6e6e6;
+          box-shadow: 0 0 10px #e6e6e6;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.setting-content {
+  width: 100%;
+  max-width: 600px;
+  padding: 2em;
+}
+
+h4 {
+  text-align: center;
+  font-size: 16pt;
+  font-weight: 700;
+  line-height: 2.5;
+}
+
+@media screen and (max-width: 720px) {
+  .settings {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .setting-content.hide-on-mobile {
+    display: none;
+  }
+}
+/*# sourceMappingURL=Settings.css.map */

@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  font-family: "Roboto";
+}
+
+.referral h4 {
+  color: #072c4e;
+}
+
+.referral p, .referral small {
+  text-align: center;
+  color: #666666;
+  line-height: 1.5;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.referral small {
+  display: block;
+  word-wrap: break-word;
+  max-width: 300px;
+}
+
+.referral .copy-icon {
+  display: block;
+  text-align: center;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.referral .copy-icon:hover i {
+  background-color: #fafafa;
+}
+
+.referral .copy-icon i {
+  display: inline-block;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 16pt;
+  border: 1px solid #f2f2f2;
+  padding: 1em;
+  -webkit-transition: background-color 200ms linear;
+  transition: background-color 200ms linear;
+  color: #072c4e;
+}
+/*# sourceMappingURL=Referral.css.map */

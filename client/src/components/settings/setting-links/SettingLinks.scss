@@ -1,0 +1,47 @@
+@import '../../misc/config';
+
+.setting-links{
+    padding: 2em;
+    background-color: darken($white, 3);
+    // max-width: 200px;
+    min-height: 70vh;
+    h4{
+        color: lighen($black, 80);
+        font-size: 14pt;
+        margin-top: 1em;
+        i{
+            margin-right: 10px;
+            color: $primary-color;
+        }
+    }
+    a{
+        margin-left: 2.0em;
+        color: lighten($black, 40);
+        font-size: 12pt;
+        &:hover{
+            color: lighten($black, 10) ;
+        }
+        &.active{
+            color: $primary-color;
+        }
+    }
+
+    .menu-item{
+        &.active{
+            color: $primary-color !important;
+        }
+    }
+}
+@media screen and (max-width: 720px) {
+    .setting-links{
+        max-width: none;
+        &.hide-on-mobile{
+            display: none;
+        }
+        h4{
+            margin-left: 0;
+            position: relative;
+            left: -20px;
+        }
+    }
+}

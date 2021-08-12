@@ -1,0 +1,15 @@
+.alert{
+    width: 80%;
+    max-width: 400px;
+    background-color: #f2f2f2;
+    box-shadow: 0px 0 10px #888;
+    border-right: 4px solid #666;
+    max-height: 200px;
+    margin-bottom: 10px;
+    padding: 1em;
+    position: fixed;
+    left: 1em;
+    top: 1em;
+    z-index: 2000;
+
+}
