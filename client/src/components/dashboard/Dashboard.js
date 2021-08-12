@@ -21,12 +21,15 @@ import {
 import logo from "../../img/logo.png";
 import Avatar from "react-avatar";
 
+import Layout2 from '../layout2/layout2';
 // Contents import
 import Wallet from "../contents/Wallet";
 import NewDashboard from "./NewDashboard";
+
 import Chat from "../Chat";
 import Transactions from "../contents/Transactions";
 import Layout2 from '../layout2/layout2'
+
 import SideMenuList from "../layout2/side-menu/SideMenuList";
 import Settings from "../settings/Settings";
 // import Chat from "../Chat";
@@ -102,6 +105,9 @@ const Dashboard = ({
         <Route path="/settings" component={Settings} />
         <Route path="/transactions" component={Transactions}></Route>
         <Route path="/chat" component={Chat}></Route>
+
+        <Route path="/rates" component={Rates}></Route>
+
         <Route path="/wallet" component={Wallet} />
         <Route pathe="/newdashboard" component={NewDashboard} />
       </Switch>

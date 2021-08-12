@@ -43,28 +43,30 @@ const Layout = ({children, logout}) => {
         
         <ul className="menu-list">
             <li className="menu-item active">
-                <WalletOutlined /> <a href="javascript:;">Wallet</a>
+                <WalletOutlined /> <Link to="/wallet">Wallet</Link>
             </li>
             <li className="menu-item">
-                <PartitionOutlined /> <a href="javascript:;"> P2P</a>
+                <PartitionOutlined /> <Link to="/"> P2P</Link>
             </li>
             <li className="menu-item">
                 <PullRequestOutlined /> <Link to="/transactions">Transactions</Link>
             </li>
             <li className="menu-item">
-                <NodeExpandOutlined /> <a href="javascript:;">Trade Now</a>
+                <NodeExpandOutlined /> <Link to="/">Trade Now</Link>
             </li>
             <li className="menu-item">
-                <AreaChartOutlined /> <a href="javascript:;"> Rates</a>
+                <AreaChartOutlined /> <Link to="/rates"> Rates</Link>
             </li>
             <li className="menu-item">
-                <WechatOutlined /> <a href="javascript:;"> Chat</a>
+                <WechatOutlined /> <Link to="/chat"> Chat</Link>
             </li>
             <li className="menu-item">
                 <SettingOutlined /> <Link to="/settings"> Settings</Link>
             </li>
             <li className="menu-item">
+
                 <LogoutOutlined /> <a href="javascript:;" onClick={logout} id='nav-toggle'>Logout</a>
+
             </li>
 
         </ul>
