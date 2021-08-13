@@ -1,7 +1,42 @@
-/* .App-header {
+.App-header {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(5px - 2vmin);
-} */
+  /* font-size: calc(5px - 2vmin); */
+}
+
+.cardStyle {
+  text-align: center;
+  width: 200px;
+  cursor: pointer;
+  margin: 0 20px;
+}
+
+.cardStyle.selected {
+  border: 3px solid #041d34;
+}
+
+.coin-icon {
+  font-size: 50px;
+}
+
+.coin-icon .fa-bitcoin {
+  color: #f2a900;
+}
+.coin-icon .fa-ethereum {
+  color: #5477bb;
+}
+.coin-icon .fa-hand-holding-usd {
+  color: #da5353;
+}
+
+.form {
+  max-width: 500px;
+  margin: 50px auto;
+}
+
+.form .fa-exchange-alt {
+  line-height: unset;
+  padding: 0 10px;
+}
