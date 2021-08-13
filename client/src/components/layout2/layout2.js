@@ -70,6 +70,15 @@ const Layout = ({ children, logout, user }) => {
     }));
   };
 
+  const handleNavClicked = index => {
+    setActiveMenu(index)
+    return setState(prevState=> ({
+      ...prevState,
+      activeMenu: index,
+      navCollapsed: true,
+    }))
+  }
+
   return (
     <>
       <nav className={`side-menu ${state.navCollapsed ? "collapsed" : ""}`}>
@@ -78,13 +87,14 @@ const Layout = ({ children, logout, user }) => {
         </div>
 
         <ul className="menu-list">
+          {/* RENDER SIDE MENU */}
             {
                 menu_links.map((menu, index) => (
-                    <li className={`menu-item ${activeMenu === index ? 'active' : ''}`} 
+                    <li className={`menu-item ${state.activeMenu === index ? 'active' : ''}`} 
                         
                     key={index}>
                         <Link
-                            onClick={() => setActiveMenu(index)} 
+                            onClick={() => handleNavClicked(index)} 
                             to={menu.link}>{menu.icon} <small>{menu.text}</small></Link>
                     </li>
                 ))

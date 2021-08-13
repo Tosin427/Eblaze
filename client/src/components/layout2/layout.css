@@ -214,7 +214,7 @@
     padding-top: 0;
   }
   .side-menu.collapsed {
-    left: -100vh;
+    left: -100vw;
   }
   .header {
     background-color: #072c4e;

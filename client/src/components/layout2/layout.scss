@@ -207,7 +207,7 @@ $secondary-color: #be0606;
         transition: left 200ms linear;
         box-shadow: 0 0 10px rgba($black, .5);
         &.collapsed{
-            left: -100vh;
+            left: -100vw;
         }
     }
     .header{
