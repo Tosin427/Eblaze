@@ -13,7 +13,6 @@
     "antd": "^4.16.10",
     "axios": "^0.21.1",
     "bitcore-lib": "^8.25.10",
-    "bootstrap": "^5.1.0",
     "ethereumjs-tx": "^2.1.2",
     "framer-motion": "^4.1.17",
     "node-sass": "^6.0.1",
