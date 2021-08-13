@@ -15,6 +15,7 @@ import Transactions from "../Content/Transactions";
 // import Header from "./components/Header";
 // import Sidebar from "./components/Sidebar";
 import Wallets from "../Wallets";
+import './Dashboard.css'
 
 function NewDashboard() {
   return (

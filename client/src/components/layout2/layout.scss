@@ -46,6 +46,9 @@ $secondary-color: #be0606;
         .logo-wrapper{
             img{
                 width: 30px;
+                display: block;
+                margin: 0 auto; 
+
             }
         }
         .menu-list{
@@ -87,6 +90,8 @@ $secondary-color: #be0606;
         padding: 1em 0;
         img{
             width: 50px;
+            display: block;
+            margin: 0 auto;
         }
     }
     .menu-list{

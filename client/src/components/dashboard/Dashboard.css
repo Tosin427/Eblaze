@@ -58,3 +58,27 @@
 /* .navbar .welcome span {
     margin-right: 0.6rem;
   } */
+
+  @media screen and (max-width: 720px) {
+    .css-182t661{
+      grid-template-columns: none !important;
+    }
+
+    .css-gpseq7{
+      grid-template-columns: none !important;
+    }
+    .css-142n66a{
+      display: inline-block !important;
+      width: 100% !important;
+    }
+    .css-rk1m6r{
+      grid-column: none !important;
+    }
+
+    .css-tuh9u2{
+      grid-column: span 3/span 3 !important;
+    }
+    .dashboard-content{
+      padding-bottom: 7em !important;
+    }
+  }

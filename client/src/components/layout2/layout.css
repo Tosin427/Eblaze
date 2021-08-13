@@ -49,6 +49,8 @@
 
 .side-menu.collapsed .logo-wrapper img {
   width: 30px;
+  display: block;
+  margin: 0 auto;
 }
 
 .side-menu.collapsed .menu-list .menu-item {
@@ -88,6 +90,8 @@
 
 .side-menu .logo-wrapper img {
   width: 50px;
+  display: block;
+  margin: 0 auto;
 }
 
 .side-menu .menu-list {
