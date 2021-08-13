@@ -23,41 +23,38 @@ const initial_state = {
   activeMenu: 0,
 };
 
-
 const menu_links = [
-    {
-        text: "Overview",
-        icon: <PartitionOutlined />,
-        link: '/newdashboard'
-    },
-    {
-        text: "Wallet",
-        icon: <WalletOutlined />,
-        link: '/wallet'
-    },
-    {
-        text: "Transactions",
-        icon: <PullRequestOutlined />,
-        link: '/transactions'
-    },
-    {
-        text: "Trade Now",
-        icon: <NodeExpandOutlined />,
-        link: '/newdashboard'
-    },
-    {
-        text: "Rates",
-        icon: <AreaChartOutlined />,
-        link: '/rates'
-    },
-    {
-        text: "Settings",
-        icon: <SettingOutlined />,
-        link: '/settings'
-    },
-
-]
-
+  {
+    text: "Overview",
+    icon: <PartitionOutlined />,
+    link: "/newdashboard",
+  },
+  {
+    text: "Wallet",
+    icon: <WalletOutlined />,
+    link: "/wallet",
+  },
+  {
+    text: "Transactions",
+    icon: <PullRequestOutlined />,
+    link: "/transactions",
+  },
+  {
+    text: "Trade Now",
+    icon: <NodeExpandOutlined />,
+    link: "/trade",
+  },
+  {
+    text: "Rates",
+    icon: <AreaChartOutlined />,
+    link: "/rates",
+  },
+  {
+    text: "Settings",
+    icon: <SettingOutlined />,
+    link: "/settings",
+  },
+];
 
 const Layout = ({ children, logout, user }) => {
   const [state, setState] = useState(initial_state);
@@ -70,14 +67,14 @@ const Layout = ({ children, logout, user }) => {
     }));
   };
 
-  const handleNavClicked = index => {
-    setActiveMenu(index)
-    return setState(prevState=> ({
+  const handleNavClicked = (index) => {
+    setActiveMenu(index);
+    return setState((prevState) => ({
       ...prevState,
       activeMenu: index,
       navCollapsed: true,
-    }))
-  }
+    }));
+  };
 
   return (
     <>
@@ -88,25 +85,24 @@ const Layout = ({ children, logout, user }) => {
 
         <ul className="menu-list">
           {/* RENDER SIDE MENU */}
-            {
-                menu_links.map((menu, index) => (
-                    <li className={`menu-item ${state.activeMenu === index ? 'active' : ''}`} 
-                        
-                    key={index}>
-                        <Link
-                            onClick={() => handleNavClicked(index)} 
-                            to={menu.link}>{menu.icon} <small>{menu.text}</small></Link>
-                    </li>
-                ))
-            }
-
-            <li className="menu-item">
-
-                <a href="javascript:;" onClick={logout} id='nav-toggle'><LogoutOutlined /> <small>Logout</small></a>
-
+          {menu_links.map((menu, index) => (
+            <li
+              className={`menu-item ${
+                state.activeMenu === index ? "active" : ""
+              }`}
+              key={index}
+            >
+              <Link onClick={() => handleNavClicked(index)} to={menu.link}>
+                {menu.icon} <small>{menu.text}</small>
+              </Link>
             </li>
+          ))}
 
-       
+          <li className="menu-item">
+            <a href="javascript:;" onClick={logout} id="nav-toggle">
+              <LogoutOutlined /> <small>Logout</small>
+            </a>
+          </li>
         </ul>
         <a
           href="javascript:;"

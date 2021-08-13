@@ -26,7 +26,6 @@ import Avatar from "react-avatar";
 import Wallet from "../contents/Wallet";
 import NewDashboard from "./NewDashboard";
 
-import Chat from "../Chat";
 import Transactions from "../contents/Transactions";
 
 import Layout2 from "../layout2/layout2";
@@ -36,8 +35,7 @@ import Settings from "../settings/Settings";
 // import Chat from "../Chat";
 // import Transactions from "../contents/Transactions";
 import Rates from "../contents/Rates";
-
-
+import Trade from "../contents/Trade";
 
 const { Header, Content, Footer, Sider } = Layout;
 // const { SubMenu } = Menu;
@@ -91,7 +89,7 @@ const Dashboard = ({
   auth: { user },
   // profile: { profile },
   logout,
-}) => { 
+}) => {
   // useEffect(() => {
   //   getCurrentProfile();
   // }, [getCurrentProfile]);
@@ -102,21 +100,23 @@ const Dashboard = ({
   //   setIsCollapsed(true);
   // };
 
-  return( <Router>
-    <Layout2 logout={logout} user={user}>
-      <Switch>
-        <Route path="/settings" component={Settings} />
-        <Route path="/transactions" component={Transactions}></Route>
-        {/* <Route path="/chat" component={Chat}></Route> */}
+  return (
+    <Router>
+      <Layout2 logout={logout} user={user}>
+        <Switch>
+          <Route path="/trade" component={Trade} />
+          <Route path="/settings" component={Settings} />
+          <Route path="/transactions" component={Transactions}></Route>
+          {/* <Route path="/chat" component={Chat}></Route> */}
 
-        <Route path="/rates" component={Rates}></Route>
+          <Route path="/rates" component={Rates}></Route>
 
-        <Route path="/wallet" component={Wallet} />
-        <Route pathe="/newdashboard" component={NewDashboard} />
-      </Switch>
-    </Layout2>
-  </Router>)
-
+          <Route path="/wallet" component={Wallet} />
+          <Route pathe="/newdashboard" component={NewDashboard} />
+        </Switch>
+      </Layout2>
+    </Router>
+  );
 
   return (
     <Router>
@@ -136,7 +136,7 @@ const Dashboard = ({
               <Link to="/transactions">Transactions</Link>
             </Menu.Item>
             <Menu.Item key="4" icon={<NodeExpandOutlined />}>
-              Trade Now
+              <Link to="/transactions">tr</Link>
             </Menu.Item>
             <Menu.Item key="5" icon={<AreaChartOutlined />}>
               <Link to="/rates">Rates</Link>
@@ -159,8 +159,8 @@ const Dashboard = ({
               {/* <Gravatar
                 email={user && user.email}
                 size={30}
-                style={{ borderRadius: '50%' }}
-              />{' '} */}{" "}
+                style={{ borderRadius: "50%" }}
+              />{" "} */}
               <Avatar name={user && user.name} size="40" round={true} />{" "}
               {user && user.name}{" "}
             </h1>
@@ -178,12 +178,12 @@ const Dashboard = ({
               <Route path="/wallet" component={Wallet} />
               <Route pathe="/newdashboard" component={NewDashboard} />
             </Switch>
-            {/* <div
-            className="site-layout-background"
-            style={{ padding: 24, minHeight: 360 }}
-          >
-            Bill is a cat.
-          </div> */}
+            <div
+              className="site-layout-background"
+              style={{ padding: 24, minHeight: 360 }}
+            >
+              Bill is a cat.
+            </div>
           </Content>
           <Footer style={{ textAlign: "center" }}>
             Built ©2021 All rights Early Baze Wallet
