@@ -1,7 +1,9 @@
 import React from "react";
 import CryptosTile from "../tradeComponents/CryptosTile";
 import TradeContainers from "../tradeComponents/TradeContainers";
-// import { bStyles } from "./bootstrap.module.css";
+import  bStyles  from "./scss/bootstrap.module.scss";
+
+console.log(bStyles)
 
 const Trade = () => {
   const tiles = [
@@ -21,7 +23,7 @@ const Trade = () => {
   ];
   return (
     <div>
-      <div className="row">
+      <div className={[bStyles['bg-danger'], bStyles['text-white'], bStyles['p-4']].join(' ') }>
         <div className="col-6">
           <div className="d-flex">
             {tiles.map((item) => (
