@@ -130,7 +130,7 @@ const Wallet = ({ getCurrentProfile, auth: { user } }) => {
       https://blockchain.info/ticker`
       )
       .then((response) => setRate(response.data.USD.buy));
-  }, [bitadd]);
+  }, []);
 
   const [ethRate, setEthRate] = useState("");
 
