@@ -1,27 +1,76 @@
-import React from "react";
-import { Divider } from "antd";
+import { ChakraProvider } from "@chakra-ui/react";
+
+import { IconButton } from "@chakra-ui/button";
+import { SimpleGrid } from "@chakra-ui/layout";
+import { GridItem } from "@chakra-ui/layout";
+import { Text } from "@chakra-ui/layout";
+import { Stack } from "@chakra-ui/layout";
+import { Center } from "@chakra-ui/layout";
+import { Box } from "@chakra-ui/layout";
+import { FiPlus } from "react-icons/fi";
+import BigCard from "../Content/BigCard";
+import Security from "../Content/Security";
+import SmallCard from "../Content/SmallCard";
+import Transactions from "../Content/Transactions";
+// import Header from "./components/Header";
+// import Sidebar from "./components/Sidebar";
+import Wallets from "../Wallets";
 
 function NewDashboard() {
   return (
-    <div>
-      <Divider orientation="left">Overview</Divider>
-      <div style={{ margin: "auto", width: "50%", padding: "10px" }}>
-        <h1
-          style={{
-            color: "#004100",
-            fontSize: "50px",
-            textAlign: "center",
-            paddingTop: "100px",
-          }}
-        >
-          Welcome Back
-        </h1>
-        <p style={{ color: "#004100", textAlign: "center" }}>
-          Click on Wallet Tab!!!
-        </p>
-        {/* <img style={{ width: '50%' }} src={logo} alt="" /> */}
-      </div>
-    </div>
+    <ChakraProvider>
+      <Box>
+        {/* <Header /> */}
+        <SimpleGrid columns={10} gap={3}>
+          <GridItem colSpan={1}>{/* <Sidebar /> */}</GridItem>
+          <GridItem colSpan={6}>
+            <SimpleGrid columns={5} gap={8}>
+              <GridItem colSpan={3}>
+                <BigCard />
+              </GridItem>
+              <GridItem colSpan={2}>
+                <Text
+                  fontWeight="semibold"
+                  fontSize="sm"
+                  textColor="gray"
+                  my={2}
+                  ml={8}
+                >
+                  FEES
+                </Text>
+                <Stack spacing={4}>
+                  <SmallCard value="0.069%" text="MAKER" />
+                  <SmallCard value="0.069%" text="MAKER" />
+                </Stack>
+              </GridItem>
+            </SimpleGrid>
+          </GridItem>
+          <GridItem colSpan={3}>
+            <Wallets />
+          </GridItem>
+        </SimpleGrid>
+        <SimpleGrid columns={10} gap={3} mt={12}>
+          <GridItem colSpan={1}>
+            <Center>
+              <IconButton
+                bg="#5C4E7A"
+                textColor="white"
+                position="fixed"
+                bottom={12}
+                size="lg"
+                icon={<FiPlus />}
+              />
+            </Center>
+          </GridItem>
+          <GridItem colSpan={6}>
+            <Transactions />
+          </GridItem>
+          <GridItem colSpan={3}>
+            <Security />
+          </GridItem>
+        </SimpleGrid>
+      </Box>
+    </ChakraProvider>
   );
 }
 
