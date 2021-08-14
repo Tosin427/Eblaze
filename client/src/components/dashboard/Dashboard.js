@@ -31,11 +31,12 @@ import Transactions from "../contents/Transactions";
 import Layout2 from "../layout2/layout2";
 
 import SideMenuList from "../layout2/side-menu/SideMenuList";
-import Settings from "../settings/Settings";
+
 // import Chat from "../Chat";
 // import Transactions from "../contents/Transactions";
 import Rates from "../contents/Rates";
 import Trade from "../contents/Trade";
+import Settings from "../settings/Settings";
 
 const { Header, Content, Footer, Sider } = Layout;
 // const { SubMenu } = Menu;
